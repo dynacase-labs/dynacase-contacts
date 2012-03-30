@@ -6,24 +6,34 @@
     </description>
 
     <requires>
-        <module name="freedom" version="3.0" comp="ge" />
+        <module name="dynaase-plaform" version="3.2" comp="ge" />
     </requires>
 
     <post-install>
         <process command="programs/record_application USERCARD" />
         <process command="programs/update_catalog" />
+        <process command="./wsh.php --api=importDocuments --file=./USERCARD/contacts.ods">
+                    <label>Create Contact families</label>
+                </process>
+        <process command="./wsh.php --api=importDocuments --file=./USERCARD/personnldap.ods">
+            <label>Create contact LDAP mapping</label>
+        </process>
     </post-install>
 
     <post-upgrade>
         <process command="programs/pre_migration USERCARD" />
         <process command="programs/record_application USERCARD" />
+
+        <process command="./wsh.php --api=importDocuments --file=./USERCARD/contacts.ods">
+            <label>Update Contact families</label>
+        </process>
         <process command="programs/post_migration USERCARD" />
         <process command="programs/update_catalog" />
     </post-upgrade>
 
     <changelog>
         <version number="0.1.0" date="2009-12-28">
-            <change title="My first application" />
+            <change title="Contact management" />
         </version>
     </changelog>
 

@@ -1,19 +1,38 @@
 <?php
+
+/**
+ * @author Anakeen
+ * @license http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License
+ */
+
 // ---------------------------------------------------------------
-// $Id: TEMPLATE_init.php.in,v 1.1 2010-01-13 10:47:16 eric Exp $
-// $Source: /home/cvsroot/anakeen/addons/template/TEMPLATE_init.php.in,v $
+// $Id: USERCARD_init.php.in,v 1.17 2005/10/06 13:18:42 eric Exp $
+// $Source: /home/cvsroot/anakeen/freedom/freedom/App/Usercard/USERCARD_init.php.in,v $
 // ---------------------------------------------------------------
 
 global $app_const;
 
-$app_const = array(
-    "INIT" => "yes",
-    "VERSION" => "@VERSION@-@RELEASE@",
-    /*"TEMPLATE_ARG" => array(
-        "val" => "Template Land",
-        "descr" => N_("Name of the example"),
-        "user" => "N"
-    )*/
+
+$app_const= array(
+  "INIT" => "yes",
+  "VERSION"			=>"@VERSION@-@RELEASE@",
+  
+
+  "USERCARD_FIRSTFAM" => array("val"=>"USER",
+			       "descr"=>N_("first family used")),
+  "USERCARD_SECONDFAM" => array("val"=>"SOCIETY",
+				"descr"=>N_("second family used")),
+  // User parameters
+  "FADDBOOK_MAINLINE" => array("kind"=>"static", 
+			       "val"=>"25", 
+			       "descr"=>N_("main view line displayed"), 
+			       "user"=>"Y"),
+  "FADDBOOK_PREFERED" => array("kind"=>"static", "val"=>"", 
+			       "descr"=>N_("prefered contacts"), 
+			       "user"=>"Y"),
+  "FADDBOOK_MAINCOLS" => array("kind"=>"static", "val"=>"", "descr"=>N_("main view columns"), "user"=>"Y")
+
 );
+
 
 ?>

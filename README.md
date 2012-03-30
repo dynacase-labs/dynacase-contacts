@@ -1,29 +1,7 @@
-Dynacase Platform  
+Dynacase Usercard  
 ============================
 
-Anakeen ISV of Dynacase : create dynamic business applications with an open source platform.  
-Dynacase Platform offers an innovative Open Source PHP Platform for Case Management. Dynacase Platform integrates Business Process Management (BPM), Enterprise Content Management (ECM) and Collaboration Management.  
-Dynacase Platform is an open source development platform, with core functionality provided ‘out-of-the-box’, in pre-designed modules.
-
-Getting Help
-------------
-
-### Forum 
-
-[Dynacase Forum](http://forum.dynacase.org/) is our forum.  
-
-### Twitter
-
-Please consider following the [@anakeen Twitter](http://www.twitter.com/anakeen)
-for news.
-
-### Blog
-
-The Anakeen corporate blog is [Blog](http://anakeen.com/category/blog/nouvelles) (in french). 
-
-### Commercial Support, Licensing
-
-If you want information go to [Anakeen](http://anakeen.com)
+Dynacase module used to manage person and society contact card
 
 
 Contributing
