@@ -106,7 +106,7 @@ class _USER extends Doc implements MailRecipient
      */
     function setUsableMail()
     {
-        $mail = $this->getValue("us_mail") ? $this->getValue("us_mail") : $this->getValue("us_homemail");
+        $mail = $this->getValue("us_mail", $this->getValue("us_homemail"));
         return $this->SetValue("us_usablemail", $mail);
     }
     /**
