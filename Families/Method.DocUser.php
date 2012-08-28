@@ -48,7 +48,7 @@ class _USER extends Doc implements MailRecipient
         $err = $this->RefreshLdapCard();
         
         $this->SetPrivacity(); // set doc properties in concordance with its privacity
-        $err.= ($err ? '\n' : '') . $this->setUsableMail();
+        $err.= ($err ? '\n' : '') . $this->updateUsableMail();
         return ($err);
     }
     
@@ -104,7 +104,7 @@ class _USER extends Doc implements MailRecipient
      * Set usable mail attribute
      * @return string
      */
-    function setUsableMail()
+    function updateUsableMail()
     {
         $mail = $this->getValue("us_mail", $this->getValue("us_homemail"));
         return $this->SetValue("us_usablemail", $mail);

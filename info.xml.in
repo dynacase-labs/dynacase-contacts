@@ -27,6 +27,9 @@
         <process command="./wsh.php --api=importDocuments --file=./USERCARD/contacts.ods">
             <label>Update Contact families</label>
         </process>
+        <process command="wsh --api=refreshDocuments --famid=USER --method=updateUsableMail">
+            <label>Update Contact mail</label>
+        </process>
         <process command="programs/post_migration USERCARD" />
         <process command="programs/update_catalog" />
     </post-upgrade>
