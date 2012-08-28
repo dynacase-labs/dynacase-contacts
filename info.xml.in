@@ -2,11 +2,11 @@
 <module name="@PACKAGE@" disabled="no" version="@VERSION@"
     release="@RELEASE@">
 
-    <description>Template use to create dynacase application.
+    <description>Contact management.
     </description>
 
     <requires>
-        <module name="dynaase-plaform" version="3.2" comp="ge" />
+        <module name="dynacase-platform" version="3.2" comp="ge" />
     </requires>
 
     <post-install>
@@ -32,6 +32,9 @@
     </post-upgrade>
 
     <changelog>
+        <version number="3.2.0" date="2012-08-28">
+            <change title="Change application name to dynacase contacts" />
+        </version>
         <version number="0.1.0" date="2009-12-28">
             <change title="Contact management" />
         </version>

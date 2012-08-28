@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZOO\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-13 11:40+0100\n"
+"POT-Creation-Date: 2012-08-28 10:45+0200\n"
 "PO-Revision-Date: 2010-01-12 15:35+0100\n"
 "Last-Translator: John Doe <john.doe@somewhere.org>\n"
 "Language-Team: English <distrib@somewhere.org>\n"
@@ -10,8 +10,276 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Template name"
+msgid "Access To Import Contacts"
 msgstr ""
 
-msgid "Template description"
+msgid "Access To Manage Address Book"
+msgstr ""
+
+msgid "Access To View Address Book"
+msgstr ""
+
+msgid "Add new card (duplicate title)"
+msgstr ""
+
+msgid "Address book searches"
+msgstr ""
+
+msgid "CSV"
+msgstr ""
+
+msgid "CSV specification file"
+msgstr ""
+
+msgid "Choose family to create"
+msgstr ""
+
+msgid "Generic Management"
+msgstr ""
+
+msgid "Help"
+msgstr ""
+
+msgid ""
+"If an attribut is a multiline string, use the \\ n characters to specify the "
+"new line"
+msgstr ""
+
+msgid "Import CSV"
+msgstr ""
+
+msgid "Import from"
+msgstr ""
+
+msgid "Import vcard"
+msgstr ""
+
+msgid "Keep address book card"
+msgstr ""
+
+msgid "Only one line by personn is authorized"
+msgstr ""
+
+msgid "Replace address book card if has permission else duplicate"
+msgstr ""
+
+msgid ""
+"The first four fields must not be change, they identified the card structure"
+msgstr ""
+
+msgid "The separator field is the semicolon(;)"
+msgstr ""
+
+msgid "User Card"
+msgstr ""
+
+msgid "User Card Management"
+msgstr ""
+
+msgid "VCARD"
+msgstr ""
+
+msgid "VCARD Import Result"
+msgstr ""
+
+msgid "Vcard example"
+msgstr ""
+
+msgid "add to prefered"
+msgstr ""
+
+msgid "address"
+msgstr ""
+
+msgid "address book add a prefered contacts"
+msgstr ""
+
+msgid "address book choose main view column"
+msgstr ""
+
+msgid "address book css"
+msgstr ""
+
+msgid "address book frame page"
+msgstr ""
+
+msgid "address book main page"
+msgstr ""
+
+msgid "address book prefered contacts"
+msgstr ""
+
+msgid "address book set user param"
+msgstr ""
+
+msgid "address book speed search"
+msgstr ""
+
+msgid "categorie"
+msgstr ""
+
+msgid "category"
+msgstr ""
+
+msgid "choose colums"
+msgstr ""
+
+msgid "click here to create a new"
+msgstr ""
+
+msgid "click to reload favorites"
+msgstr ""
+
+msgid "confirm delete"
+msgstr ""
+
+msgid "confirm delete all favorite"
+msgstr ""
+
+msgid "contact"
+msgstr ""
+
+msgid "delete all favorites"
+msgstr ""
+
+msgid "delete from prefered"
+msgstr ""
+
+msgid "direct"
+msgstr ""
+
+msgid "doctitle"
+msgstr ""
+
+#, c-format
+msgid "document %s is not a group"
+msgstr ""
+
+msgid "edit contact card"
+msgstr ""
+
+msgid "edit import vcard"
+msgstr ""
+
+msgid "filter on"
+msgstr ""
+
+msgid "first family used"
+msgstr ""
+
+msgid "freedom address book"
+msgstr ""
+
+msgid "id"
+msgstr ""
+
+msgid "import vcard"
+msgstr ""
+
+msgid "lines"
+msgstr ""
+
+msgid "lines per page"
+msgstr ""
+
+msgid "main view columns"
+msgstr ""
+
+msgid "main view line displayed"
+msgstr ""
+
+msgid "manage columns"
+msgstr ""
+
+msgid "my favorites"
+msgstr ""
+
+#, c-format
+msgid "no privilege to create this kind (%d) of document"
+msgstr ""
+
+#, c-format
+msgid "no valid document group : %s"
+msgstr ""
+
+#, c-format
+msgid "no valid group : %s"
+msgstr ""
+
+msgid "no vcard file specified"
+msgstr ""
+
+msgid "other"
+msgstr ""
+
+msgid "other infos"
+msgstr ""
+
+msgid "other sites"
+msgstr ""
+
+msgid "policy if same title"
+msgstr ""
+
+msgid "prefered contacts"
+msgstr ""
+
+msgid "private card"
+msgstr ""
+
+msgid "public card - read access"
+msgstr ""
+
+msgid "public card - write access"
+msgstr ""
+
+msgid "quick search"
+msgstr ""
+
+msgid "reset to default"
+msgstr ""
+
+msgid "save modifications"
+msgstr ""
+
+msgid "search"
+msgstr ""
+
+msgid "search all containing"
+msgstr ""
+
+msgid "search in all contact fields"
+msgstr ""
+
+msgid "second family used"
+msgstr ""
+
+msgid "select to view colum"
+msgstr ""
+
+msgid "society"
+msgstr ""
+
+msgid "tab usercard"
+msgstr ""
+
+msgid "usercard home page"
+msgstr ""
+
+msgid "vcs file"
+msgstr ""
+
+msgid "view as vcard"
+msgstr ""
+
+msgid "view sub families"
+msgstr ""
+
+msgid "view_detail"
+msgstr ""
+
+msgid "visibility"
+msgstr ""
+
+msgid "web"
 msgstr ""

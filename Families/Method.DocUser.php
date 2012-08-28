@@ -19,7 +19,7 @@
  * @begin-method-ignore
  * this part will be deleted when construct document class until end-method-ignore
  */
-class _USER extends Doc
+class _USER extends Doc implements MailRecipient
 {
     /*
      * @end-method-ignore
@@ -48,6 +48,7 @@ class _USER extends Doc
         $err = $this->RefreshLdapCard();
         
         $this->SetPrivacity(); // set doc properties in concordance with its privacity
+        $err.= ($err ? '\n' : '') . $this->setUsableMail();
         return ($err);
     }
     
@@ -100,7 +101,18 @@ class _USER extends Doc
         return true;
     }
     /**
+     * Set usable mail attribute
+     * @return string
+     */
+    function setUsableMail()
+    {
+        $mail = $this->getValue("us_mail") ? $this->getValue("us_mail") : $this->getValue("us_homemail");
+        return $this->SetValue("us_usablemail", $mail);
+    }
+    /**
      * return different DN if is a private or not private card
+     * @param $rdn
+     * @param string $path
      * @return string
      */
     function getUserLDAPDN($rdn, $path = "")
@@ -158,14 +170,14 @@ class _USER extends Doc
 
             case "R":
                 if ($this->profid != "0") {
-                    $err = $this->unsetControl();
+                    $this->unsetControl();
                 }
                 $this->lock();
                 break;
 
             case "W":
                 if ($this->profid != "0") {
-                    $err = $this->unsetControl();
+                    $this->unsetControl();
                 }
                 $this->unlock();
                 break;
@@ -194,6 +206,24 @@ class _USER extends Doc
                 break;
         }
         if ($err != "") AddLogMsg($this->title . ":" . $err);
+    }
+    /**
+     * return mail address like "john" <john@example.net>
+     * @return string
+     */
+    function getMail()
+    {
+        $mail = $this->getValue("us_usablemail");
+        if ($mail) return sprintf('"%s" <%s>', str_replace('"', '-', $this->getTitle()) , $mail);
+        return '';
+    }
+    /**
+     * return attribute used to filter from keyword
+     * @return string
+     */
+    static function getMailAttribute()
+    {
+        return "us_usablemail";
     }
     /**
      * @begin-method-ignore
