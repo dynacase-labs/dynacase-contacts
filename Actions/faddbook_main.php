@@ -21,16 +21,16 @@ include_once ("FDL/Lib.Dir.php");
 /**
  * View list of document for a same family
  * @param Action &$action current action
- * @global chgAttr Http var :
- * @global chgId Http var :
- * @global chgValue Http var :
- * @global usedefaultview Http var : (Y|N) set Y if detail doc must be displayed with default view
- * @global etarget Http var : window target when edit doc
- * @global target Http var : window target when view doc
- * @global dirid Http var : folder/search id to restric searches
- * @global cols Http var : attributes id for column like : us_fname|us_lname
- * @global viewone Http var : (Y|N) set Y if want display detail doc if only one found
- * @global createsubfam Http var : (Y|N) set N if no want view possibility to create subfamily
+ * @global string $chgAttr Http var :
+ * @global string $chgId Http var :
+ * @global string $chgValue Http var :
+ * @global string $usedefaultview Http var : (Y|N) set Y if detail doc must be displayed with default view
+ * @global string $etarget Http var : window target when edit doc
+ * @global string $target Http var : window target when view doc
+ * @global string $dirid Http var : folder/search id to restric searches
+ * @global string $cols Http var : attributes id for column like : us_fname|us_lname
+ * @global string $viewone Http var : (Y|N) set Y if want display detail doc if only one found
+ * @global string $createsubfam Http var : (Y|N) set N if no want view possibility to create subfamily
  */
 function faddbook_main(&$action)
 {
@@ -71,6 +71,7 @@ function faddbook_main(&$action)
         25,
         50
     );
+    $tl = array();
     foreach ($choicel as $k => $v) {
         $tl[] = array(
             "count" => $v,
@@ -104,7 +105,12 @@ function faddbook_main(&$action)
     $ucols = array();
     if ($cols) {
         $tccols = explode("|", $cols);
-        foreach ($tccols as $k => $v) $ucols[$v] = 1;
+        foreach ($tccols as $k => $v) {
+            /**
+             * @var string $v
+             */
+            $ucols[$v] = 1;
+        }
         $action->lay->set("choosecolumn", false); // don't see choose column
         
     } else {
@@ -128,7 +134,7 @@ function faddbook_main(&$action)
     // add sub families for creation
     $child = array();
     if (($dnfam->control("create") == "") && ($dnfam->control("icreate") == "")) {
-        $child[$famid] = array(
+        $child[$dnfam->id] = array(
             "title" => $dnfam->title,
             "id" => $dnfam->id
         );
@@ -203,6 +209,9 @@ function faddbook_main(&$action)
     }
     
     $psearch = $pstart * $lpage;
+    /**
+     * @var int $psearch
+     */
     $fsearch = $psearch + $lpage + 1;
     $cl = $rq = getChildDoc($dbaccess, $dirid, $psearch, $fsearch, $filter, $action->user->id, "TABLE", $sfam, false, "title");
     
@@ -244,9 +253,7 @@ function faddbook_main(&$action)
         }
         $action->lay->setBlockData("C$il", $dcol);
         $dline[$il]["cid"] = $v["id"];
-        $dline[$il]["fabzone"] = $pzone;
         $dline[$il]["canChange"] = $attchange;
-        $dline[$il]["fabzone"] = $pzone;
         $dline[$il]["etarget"] = ($etarget) ? $etarget : "edit" . $v["id"];
         $dline[$il]["title"] = xml_entity_encode(mb_convert_case(mb_strtolower($v["title"]) , MB_CASE_TITLE));
         $dline[$il]["Line"] = $il;
