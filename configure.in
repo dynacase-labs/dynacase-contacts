@@ -17,7 +17,7 @@ VERSION=`cat VERSION`
 AC_SUBST(RELEASE)
 RELEASE=`cat RELEASE`
 AC_SUBST(PACKAGE)
-PACKAGE=dynacase-usercard
+PACKAGE=dynacase-contacts
 AC_SUBST(APPNAME)
 APPNAME=USERCARD
 ac_default_prefix=/usr/share/what

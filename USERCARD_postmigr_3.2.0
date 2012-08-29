@@ -1,0 +1,3 @@
+#!/bin/bash
+
+./wsh.php --api=refreshDocuments --famid=USER --method=updateUsableMail
