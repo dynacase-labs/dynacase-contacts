@@ -11,6 +11,7 @@
 
     <post-install>
         <process command="programs/record_application USERCARD" />
+        <process command="./wsh.php --api=appadmin --method=reinit --appname=USERCARD" />
         <process command="programs/update_catalog" />
         <process command="./wsh.php --api=importDocuments --file=./USERCARD/contacts.ods">
                     <label>Create Contact families</label>
