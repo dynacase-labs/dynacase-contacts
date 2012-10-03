@@ -22,7 +22,7 @@ class _SOCIETYBOOK extends Doc
     /*
      * @end-method-ignore
     */
-    var $faddbook_card = "USERCARD:FADDBOOKSOC_CARD:U";
+    //var $faddbook_card = "USERCARD:FADDBOOKSOC_CARD:U";
     var $faddbook_resume = "USERCARD:FADDBOOKSOC_RESUME:T";
     /**
      * @templateController

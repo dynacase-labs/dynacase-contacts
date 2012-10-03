@@ -15,7 +15,7 @@ global $app_const;
 
 $app_const= array(
   "INIT" => "yes",
-  "VERSION"			=>"@VERSION@-@RELEASE@",
+  "VERSION"			=>"3.2.0-@RELEASE@",
   
 
   "USERCARD_FIRSTFAM" => array("val"=>"USER",
