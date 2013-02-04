@@ -38,7 +38,7 @@ class _USERBOOK extends Doc
         $action->parent->AddCssRef("USERCARD:faddbook.css", true);
         
         $imgu = "";
-        $img = $this->getValue("us_photo");
+        $img = $this->getRawValue("us_photo");
         if ($img == "") {
             $this->lay->set("hasPhoto", false);
         } else {
@@ -47,30 +47,30 @@ class _USERBOOK extends Doc
             $this->lay->set("photo", $imgu);
         }
         
-        $this->lay->set("nom", $this->getValue("us_lname"));
-        $this->lay->set("prenom", $this->getValue("us_fname"));
+        $this->lay->set("nom", $this->getRawValue("us_lname"));
+        $this->lay->set("prenom", $this->getRawValue("us_fname"));
         
-        $soc = $this->getValue("us_society");
+        $soc = $this->getRawValue("us_society");
         $this->lay->set("hasSoc", ($soc != "" ? true : false));
         $this->lay->set("societe", $soc);
         
-        $mail = $this->getValue("us_mail");
+        $mail = $this->getRawValue("us_mail");
         $this->lay->set("hasMail", ($mail != "" ? true : false));
         $this->lay->set("addmail", $mail);
         
-        $mob = $this->getValue("us_mobile");
+        $mob = $this->getRawValue("us_mobile");
         $this->lay->set("nomob", $mob);
         $this->lay->set("hasMob", ($mob != "" ? true : false));
         
-        $tel = $this->getValue("us_phone");
+        $tel = $this->getRawValue("us_phone");
         $this->lay->set("notel", $tel);
         $this->lay->set("hasTel", ($tel != "" ? true : false));
         
-        $sky = $this->getValue("us_skypeid");
+        $sky = $this->getRawValue("us_skypeid");
         $this->lay->set("skypeid", $sky);
         $this->lay->set("hasSky", ($sky != "" ? true : false));
         
-        $msn = $this->getValue("us_msnid");
+        $msn = $this->getRawValue("us_msnid");
         $this->lay->set("msnid", $msn);
         $this->lay->set("hasMsn", ($msn != "" ? true : false));
         
@@ -115,7 +115,7 @@ class _USERBOOK extends Doc
         $to = array();
         $tabs = array();
         foreach ($la as $k => $v) {
-            $va = $this->getValue($v->id);
+            $va = $this->getRawValue($v->id);
             if (($va || ($v->type == "array")) && (!in_array($v->id, $ta)) && (!$v->inArray())) {
                 
                 if ((($v->mvisibility == "R") || ($v->mvisibility == "W"))) {
@@ -161,19 +161,21 @@ class _USERBOOK extends Doc
     function viewperson($target = "finfo", $ulink = true, $abstract = false)
     {
         $this->viewdefaultcard($target, $ulink, $abstract);
-        $socid = $this->getValue("us_idsociety");
+        $socid = $this->getRawValue("us_idsociety");
+        $soc = null;
         if ($socid) $soc = new_doc($this->dbaccess, $socid);
         if ($socid && $soc->isAlive()) {
-            $this->lay->set("socphone", $soc->getValue("si_phone"));
-            $this->lay->set("socfax", $soc->getValue("si_fax"));
+            $this->lay->set("socphone", $soc->getRawValue("si_phone"));
+            $this->lay->set("socfax", $soc->getRawValue("si_fax"));
         } else {
             $this->lay->set("socphone", "");
             $this->lay->set("socfax", "");
         }
-        $secid = $this->getValue("us_idsecr");
+        $secid = $this->getRawValue("us_idsecr");
+        $sec = null;
         if ($secid) $sec = new_doc($this->dbaccess, $secid);
         if ($secid && $sec->isAlive()) {
-            $this->lay->set("secrphone", $sec->getValue("us_pphone"));
+            $this->lay->set("secrphone", $sec->getRawValue("us_pphone"));
         } else {
             $this->lay->set("secrphone", "");
         }

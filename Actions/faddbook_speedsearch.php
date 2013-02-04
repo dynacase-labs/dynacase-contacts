@@ -19,7 +19,7 @@
 include_once ("FDL/freedom_util.php");
 include_once ("FDL/Lib.Dir.php");
 
-function faddbook_speedsearch(&$action)
+function faddbook_speedsearch(Action & $action)
 {
     $dbaccess = $action->getParam("FREEDOM_DB");
     $action->parent->AddJsRef($action->GetParam("CORE_JSURL") . "/subwindow.js");

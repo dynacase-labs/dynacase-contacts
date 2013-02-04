@@ -15,7 +15,7 @@
  */
 /**
  */
-function faddbook_setuparam(&$action)
+function faddbook_setuparam(Action & $action)
 {
     $param = GetHttpVars("pname", "");
     $value = GetHttpVars("pvalue", "");
