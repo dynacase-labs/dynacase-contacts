@@ -19,7 +19,7 @@
 include_once ("FDL/freedom_util.php");
 include_once ("FDL/Lib.Dir.php");
 
-function faddbook_speedsearch(&$action)
+function faddbook_speedsearch(Action & $action)
 {
     $dbaccess = $action->getParam("FREEDOM_DB");
     $action->parent->AddJsRef($action->GetParam("CORE_JSURL") . "/subwindow.js");
@@ -27,7 +27,7 @@ function faddbook_speedsearch(&$action)
     $ws = (GetHttpVars("sallf", "") == "on" ? 1 : 0);
     $vtext = GetHttpVars("vtext", "");
     if ($vtext == "") {
-        $action->lay->set("vtext", _("search"));
+        $action->lay->set("vtext", _("uc search"));
         $action->lay->set("first", "true");
     } else {
         $action->lay->set("vtext", $vtext);

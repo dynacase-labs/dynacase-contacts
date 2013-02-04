@@ -15,8 +15,8 @@ TR.added TD{
 
 <table width="100%" >
 
-<thead><tr><th>[TEXT:id]</th>
-<th>[TEXT:doctitle]</th></thead>
+<thead><tr><th>[TEXT:uc id]</th>
+<th>[TEXT:uc doctitle]</th></thead>
 <tbody  >
 [BLOCK ADDED]
 <tr class="added"><td>[id]</td><td>[title]</td></tr>

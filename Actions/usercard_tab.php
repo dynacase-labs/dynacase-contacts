@@ -22,9 +22,12 @@ include_once ("FDL/freedom_util.php");
 include_once ("FDL/editutil.php");
 include_once ("FDL/editcard.php");
 // -----------------------------------
-function usercard_tab(&$action)
+function usercard_tab(Action & $action)
 {
     $dbaccess = $action->GetParam("FREEDOM_DB");
+    /**
+     * @var DocSearch $sdoc
+     */
     $sdoc = createDoc($dbaccess, 5, false); //new DocSearch($dbaccess);
     $sdoc->doctype = 'T'; // it is a temporary document (will be delete after)
     $sdoc->Add();
@@ -139,6 +142,7 @@ function usercard_tab(&$action)
         if ($ch <> "") $sqlfilter[] = $ch;
     }
     //REQUETE
+    $sdirid = 0;
     $query = getSqlSearchDoc($dbaccess, $sdirid, $famid, $sqlfilter);
     
     $sdoc->AddQuery($query);

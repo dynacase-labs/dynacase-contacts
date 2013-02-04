@@ -19,14 +19,12 @@
 // $Id: usercard_vcard.php,v 1.10 2005/11/23 14:03:50 eric Exp $
 // $Source: /home/cvsroot/anakeen/freedom/freedom/Action/Usercard/usercard_vcard.php,v $
 // ---------------------------------------------------------------
-
 include_once ("FDL/Class.Doc.php");
 include_once ("FDL/Class.UsercardVcard.php");
 // -----------------------------------
-function usercard_vcard(&$action)
+function usercard_vcard(Action & $action)
 {
     // -----------------------------------
-    
     // Get all the params
     $docid = GetHttpVars("id"); // dccument to export
     $dbaccess = $action->GetParam("FREEDOM_DB");

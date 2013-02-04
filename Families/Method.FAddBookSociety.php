@@ -58,7 +58,7 @@ class _SOCIETYBOOK extends Doc
         $to = array();
         $tabs = array();
         foreach ($la as $k => $v) {
-            $va = $this->getValue($v->id);
+            $va = $this->getRawValue($v->id);
             if (($va || ($v->type == "array")) && (!in_array($v->id, $ta)) && (!$v->inArray())) {
                 
                 if ((($v->mvisibility == "R") || ($v->mvisibility == "W"))) {
@@ -86,7 +86,7 @@ class _SOCIETYBOOK extends Doc
             }
         }
         
-        $logo = $this->getValue("si_logo");
+        $logo = $this->getRawValue("si_logo");
         if ($logo) {
             $this->lay->set("logo", $this->getHtmlAttrValue("si_logo"));
             $this->lay->set("wlogo", "70");

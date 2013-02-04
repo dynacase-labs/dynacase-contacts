@@ -6,45 +6,48 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Toolbox\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-28 10:45+0200\n"
-"PO-Revision-Date: 2010-11-23 10:38+0100\n"
+"POT-Creation-Date: 2013-02-04 12:31+0100\n"
+"PO-Revision-Date: 2013-02-04 12:28+0100\n"
 "Last-Translator: Arnaud BUATHIER <arnaud.buathier@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 
+#: textxml.php:93
+msgid "(private)"
+msgstr "(privé)"
+
+#: USERCARD.app:21
 msgid "Access To Import Contacts"
 msgstr "Accès à l'importation des utilisateurs"
 
+#: USERCARD.app:25
 msgid "Access To Manage Address Book"
 msgstr "Accès à la gestion du carnet d'adresses"
 
+#: USERCARD.app:29
 msgid "Access To View Address Book"
 msgstr "Accès pour voir le carnet d'adresses"
 
+#: textxml.php:20 textxml.php:40
 msgid "Add new card (duplicate title)"
 msgstr "Ajout nouvelle carte (titre dupliqué)"
 
+#: textxml.php:75
 msgid "Address book searches"
 msgstr "Adress book : recherche rapide"
 
-msgid "CSV"
-msgstr "CSV"
+#: textxml.php:59
+msgid "Complete view"
+msgstr "Vue complète"
 
-msgid "CSV specification file"
-msgstr "Spécification fichier CSV"
+#: textxml.php:55 textxml.php:56
+msgid "Fax"
+msgstr "Fax"
 
-msgid "Choose family to create"
-msgstr "Choisissez une famille de document à créer"
-
-msgid "Generic Management"
-msgstr "Gestion générique"
-
-msgid "Help"
-msgstr "Aide"
-
+#: textxml.php:30
 msgid ""
 "If an attribut is a multiline string, use the \\ n characters to specify the "
 "new line"
@@ -52,243 +55,394 @@ msgstr ""
 "Si un attribut est multi-ligne, utilisez les caractères \\n pour indiquer le "
 "saut de ligne"
 
-msgid "Import CSV"
-msgstr "Importation CSV"
-
+#: textxml.php:11 textxml.php:33
 msgid "Import from"
 msgstr "Importation à partir de"
 
+#: textxml.php:9 textxml.php:23 textxml.php:43
 msgid "Import vcard"
 msgstr "Importation Vcard"
 
+#: textxml.php:22 textxml.php:42
 msgid "Keep address book card"
 msgstr "Garde la carte originale"
 
+#: textxml.php:29
 msgid "Only one line by personn is authorized"
 msgstr "Une seule ligne par personne est autorisée"
 
+#: textxml.php:58
+msgid "Personnel"
+msgstr "Personnel"
+
+#: textxml.php:53 textxml.php:54 textxml.php:60
+msgid "Phone"
+msgstr "Téléphone"
+
+#: textxml.php:50
+msgid "Professional"
+msgstr "Professionnel"
+
+#: textxml.php:21 textxml.php:41
 msgid "Replace address book card if has permission else duplicate"
 msgstr "Remplace la carte si permission accordée sinon duplication"
 
+#: textxml.php:57
+msgid "Secretary"
+msgstr "Secrétaire"
+
+#: textxml.php:51
+msgid "Society"
+msgstr "Société"
+
+#: textxml.php:28
 msgid ""
 "The first four fields must not be change, they identified the card structure"
 msgstr ""
 "Les quatre premiers champs ne doivent pas être modifiés, ils identifient la "
 "structure de la carte"
 
-msgid "The separator field is the semicolon(;)"
-msgstr "Le séparateur de colonne est le point-virgule ';'"
-
+#: USERCARD.app:5
 msgid "User Card"
 msgstr "Carnet d'adresses"
 
+#: USERCARD.app:6
 msgid "User Card Management"
 msgstr "Carnet d'adresses"
 
+#: textxml.php:1
+msgid "Usercard Management"
+msgstr "Gestion des contacts"
+
+#: textxml.php:12
 msgid "VCARD"
 msgstr "VCARD"
 
+#: textxml.php:90
 msgid "VCARD Import Result"
 msgstr "Résultat de l'importation VCARD"
 
+#: textxml.php:25 textxml.php:44
 msgid "Vcard example"
 msgstr "Exemple de Vcard"
 
+#: textxml.php:70
 msgid "add to prefered"
 msgstr "ajouter à mes préférés"
 
-msgid "address"
-msgstr "Adresse..."
-
+#: USERCARD.app:108 USERCARD.app:114
 msgid "address book add a prefered contacts"
 msgstr "Adress book : ajout d'un préféré"
 
+#: USERCARD.app:78
 msgid "address book choose main view column"
 msgstr "Carnet d'adresse : choisir les colonnes"
 
+#: USERCARD.app:66
 msgid "address book css"
 msgstr "CSS carnet d'adresse"
 
+#: USERCARD.app:84
 msgid "address book frame page"
 msgstr "Adress book : frames"
 
+#: USERCARD.app:90
 msgid "address book main page"
 msgstr "Adress book : page principale"
 
+#: USERCARD.app:102
 msgid "address book prefered contacts"
 msgstr "Adress book : préférés"
 
+#: USERCARD.app:72
 msgid "address book set user param"
 msgstr "Adress book : position du p. utilisteur"
 
+#: USERCARD.app:96
 msgid "address book speed search"
 msgstr "Adress book : recherche rapide"
 
+#: textxml.php:88
 msgid "categorie"
 msgstr "Catégorie"
 
+#: textxml.php:14
 msgid "category"
 msgstr "catégorie"
 
-msgid "choose colums"
-msgstr "Choix des colonnes affichées"
-
-msgid "click here to create a new"
-msgstr "Création...."
-
+#: textxml.php:2
 msgid "click to reload favorites"
 msgstr "Cliquer ici pour raffraichir mes favoris"
 
+#: textxml.php:78
+msgid "confidentiality"
+msgstr "confidentialité"
+
+#: textxml.php:7
 msgid "confirm delete"
 msgstr "retirer des préférés ?"
 
+#: textxml.php:5
 msgid "confirm delete all favorite"
 msgstr "Vider la liste des préférés ?"
 
+#: textxml.php:45 textxml.php:82
 msgid "contact"
 msgstr "Contact..."
 
+#: textxml.php:4
 msgid "delete all favorites"
 msgstr "Suppression des préférés (tous)"
 
+#: textxml.php:8
 msgid "delete from prefered"
 msgstr "supprimer des contacts préférés"
 
+#: Families/Method.DocUser.php:74 Families/Method.DocUser.php:76
 msgid "direct"
 msgstr "direct"
 
-msgid "doctitle"
-msgstr "titre"
-
+#: Families/Externals/contacts.php:238
 #, c-format
 msgid "document %s is not a group"
 msgstr "le document %s n'est pas un groupe"
 
-msgid "edit contact card"
-msgstr "éditer la fiche"
-
-msgid "edit import vcard"
-msgstr "importation format Vcard"
-
-msgid "filter on"
-msgstr "Filtrer sur"
-
+#: USERCARD_init.php:22
 msgid "first family used"
 msgstr "première famille utilisée"
 
+#: textxml.php:89
 msgid "freedom address book"
 msgstr "Carnet d'Adresses Dynacase"
 
-msgid "id"
-msgstr "id"
-
+#: USERCARD.app:47
 msgid "import vcard"
 msgstr "Importation Vcard"
 
-msgid "lines"
-msgstr "lignes"
-
-msgid "lines per page"
-msgstr "lignes par pages"
-
-msgid "main view columns"
-msgstr "Vue principale"
-
-msgid "main view line displayed"
-msgstr "édition des colonnes"
-
-msgid "manage columns"
-msgstr "Gérer les colonnes"
-
+#: textxml.php:3
 msgid "my favorites"
 msgstr "Mes préférés..."
 
-#, c-format
-msgid "no privilege to create this kind (%d) of document"
-msgstr "vous n'avez pas la permission de créer ce type (%d) de document "
-
+#: Families/Externals/contacts.php:200
 #, c-format
 msgid "no valid document group : %s"
 msgstr "groupe de document invalide : %s"
 
+#: Families/Externals/contacts.php:205
 #, c-format
 msgid "no valid group : %s"
 msgstr "groupe invalide : %s"
 
+#: Actions/usercard_importvcard.php:42
 msgid "no vcard file specified"
 msgstr "pas de fichier vcard spécifié"
 
+#: textxml.php:49
+msgid "not defined"
+msgstr "non défini"
+
+#: textxml.php:47 textxml.php:84
 msgid "other"
 msgstr "Autres..."
 
+#: textxml.php:86
 msgid "other infos"
 msgstr "Autres informations..."
 
+#: textxml.php:48
 msgid "other sites"
 msgstr "Autres sites..."
 
-msgid "policy if same title"
-msgstr "politique si même titre"
-
+#: USERCARD_init.php:31
 msgid "prefered contacts"
 msgstr "Préférés"
 
+#: textxml.php:16 textxml.php:36 textxml.php:79
 msgid "private card"
 msgstr "carte privée"
 
+#: textxml.php:17 textxml.php:37 textxml.php:80
 msgid "public card - read access"
 msgstr "carte publique - accès lecture"
 
+#: textxml.php:18 textxml.php:38 textxml.php:81
 msgid "public card - write access"
 msgstr "carte publique - accès écriture"
 
+#: textxml.php:6
 msgid "quick search"
 msgstr "recherche rapide"
 
-msgid "reset to default"
-msgstr "configuration par défaut"
-
-msgid "save modifications"
-msgstr "sauver les modifications"
-
-msgid "search"
-msgstr "recherche"
-
-msgid "search all containing"
-msgstr "rechercher tous ceux contenant..."
-
+#: textxml.php:76
 msgid "search in all contact fields"
 msgstr "recherche dans tout les champs"
 
+#: USERCARD_init.php:24
 msgid "second family used"
 msgstr "seconde famille utilisée"
 
-msgid "select to view colum"
-msgstr "selection pour voir les colonnes"
-
+#: textxml.php:83
 msgid "society"
 msgstr "société"
 
+#: textxml.php:52
+msgid "socname"
+msgstr "Nom de la société"
+
+#: USERCARD.app:53
 msgid "tab usercard"
 msgstr "onglets carnet d'adresses"
 
+#: textxml.php:13
+msgid "uc CSV"
+msgstr "CSV"
+
+#: textxml.php:26
+msgid "uc CSV specification file"
+msgstr "Spécification fichier CSV"
+
+#: textxml.php:63
+msgid "uc Choose family to create"
+msgstr "Choisissez une famille de document à créer"
+
+#: textxml.php:24
+msgid "uc Help"
+msgstr "Aide"
+
+#: textxml.php:10 textxml.php:32
+msgid "uc Import CSV"
+msgstr "Importation CSV"
+
+#: Actions/Zones/faddbook_menu.php:64
+#, c-format
+msgid "uc Sure %s ?"
+msgstr "êtes vous sur %s ?"
+
+#: textxml.php:27
+msgid "uc The separator field is the semicolon(;)"
+msgstr "Le séparateur de colonne est le point-virgule ';'"
+
+#: textxml.php:31
+msgid "uc Tools"
+msgstr "Outils"
+
+#: textxml.php:46 textxml.php:85
+msgid "uc address"
+msgstr "Adresse..."
+
+#: textxml.php:71
+msgid "uc choose colums"
+msgstr "Choix des colonnes affichées"
+
+#: textxml.php:61
+msgid "uc click here to create a new"
+msgstr "Création...."
+
+#: textxml.php:92
+msgid "uc doctitle"
+msgstr "titre"
+
+#: textxml.php:69
+msgid "uc edit contact card"
+msgstr "éditer la fiche"
+
+#: USERCARD.app:42
+msgid "uc edit import vcard"
+msgstr "importation format Vcard"
+
+#: textxml.php:68
+msgid "uc filter on"
+msgstr "Filtrer sur"
+
+#: textxml.php:91
+msgid "uc id"
+msgstr "id"
+
+#: textxml.php:64
+msgid "uc lines"
+msgstr "lignes"
+
+#: textxml.php:65
+msgid "uc lines per page"
+msgstr "lignes par pages"
+
+#: USERCARD_init.php:33
+msgid "uc main view columns"
+msgstr "Vue principale"
+
+#: USERCARD_init.php:28
+msgid "uc main view line displayed"
+msgstr "édition des colonnes"
+
+#: textxml.php:66
+msgid "uc manage columns"
+msgstr "Gérer les colonnes"
+
+#: Actions/usercard_importvcard.php:54
+#, c-format
+msgid "uc no privilege to create this kind (%d) of document"
+msgstr "vous n'avez pas la permission de créer ce type (%d) de document "
+
+#: textxml.php:19 textxml.php:39
+msgid "uc policy if same title"
+msgstr "politique si même titre"
+
+#: textxml.php:74
+msgid "uc reset to default"
+msgstr "configuration par défaut"
+
+#: textxml.php:73
+msgid "uc save modifications"
+msgstr "sauver les modifications"
+
+#: Actions/faddbook_speedsearch.php:30
+msgid "uc search"
+msgstr "recherche"
+
+#: textxml.php:67
+msgid "uc search all containing"
+msgstr "rechercher tous ceux contenant..."
+
+#: textxml.php:72
+msgid "uc select to view colum"
+msgstr "selection pour voir les colonnes"
+
+#: USERCARD.app:37
+msgid "uc view as vcard"
+msgstr "Voir la vcard"
+
+#: textxml.php:62
+msgid "uc view sub families"
+msgstr "Voir les sous-familles"
+
+#: USERCARD.app:59
 msgid "usercard home page"
 msgstr "Annuaire"
 
+#: textxml.php:34
 msgid "vcs file"
 msgstr "fichier VCS"
 
-msgid "view as vcard"
-msgstr "voir au format Vcard"
-
-msgid "view sub families"
-msgstr "Voir les sous-familles"
-
+#: textxml.php:77
 msgid "view_detail"
 msgstr "détails"
 
+#: textxml.php:15 textxml.php:35
 msgid "visibility"
 msgstr "visibilité"
 
+#: textxml.php:87
 msgid "web"
 msgstr "Web"
+
+#~ msgid "Generic Management"
+#~ msgstr "Gestion générique"
+
+#~ msgid "main view columns"
+#~ msgstr "colonne principale de consultation"
+
+#~ msgid "uc gotoFolder"
+#~ msgstr "Parcourir par dossiers"
+
+#~ msgid "us view as vcard"
+#~ msgstr "voir au format Vcard"

@@ -19,7 +19,7 @@
  * @begin-method-ignore
  * this part will be deleted when construct document class until end-method-ignore
  */
-class _USER extends Doc implements MailRecipient
+class _USER extends Doc implements IMailRecipient
 {
     /*
      * @end-method-ignore
@@ -43,7 +43,7 @@ class _USER extends Doc implements MailRecipient
         $this->viewattr($target, $ulink, $abstract);
     }
     
-    function PostModify()
+    function postStore()
     {
         $err = $this->RefreshLdapCard();
         
@@ -52,34 +52,32 @@ class _USER extends Doc implements MailRecipient
         return ($err);
     }
     
-    function SpecRefresh()
+    function preRefresh()
     {
         // " gettitle(D,US_IDSOCIETY):US_SOCIETY,US_IDSOCIETY";
-        $this->refreshDocTitle("US_IDSOCIETY", "US_SOCIETY");
-        
         $this->AddParamRefresh("US_IDSOCIETY,US_SOCADDR", "US_WORKADDR,US_WORKTOWN,US_WORKPOSTALCODE,US_WORKWEB,US_WORKCEDEX,US_COUNTRY,US_SPHONE,US_SFAX");
         $this->AddParamRefresh("US_IDSOCIETY", "US_SCATG,US_JOB");
         
-        $doc = new_Doc($this->dbaccess, $this->getValue("US_IDSOCIETY"));
+        $doc = new_Doc($this->dbaccess, $this->getRawValue("US_IDSOCIETY"));
         if ($doc->isAlive()) {
-            if ($this->getValue("US_SOCADDR") != "") {
-                $this->setValue("US_WORKADDR", $doc->getValue("SI_ADDR", " "));
-                $this->setValue("US_WORKTOWN", $doc->getValue("SI_TOWN", " "));
-                $this->setValue("US_WORKPOSTALCODE", $doc->getValue("SI_POSTCODE", " "));
-                $this->setValue("US_WORKWEB", $doc->getValue("SI_WEB", " "));
-                $this->setValue("US_WORKCEDEX", $doc->getValue("SI_CEDEX", " "));
-                $this->setValue("US_COUNTRY", $doc->getValue("SI_COUNTRY", " "));
+            if ($this->getRawValue("US_SOCADDR") != "") {
+                $this->setValue("US_WORKADDR", $doc->getRawValue("SI_ADDR", " "));
+                $this->setValue("US_WORKTOWN", $doc->getRawValue("SI_TOWN", " "));
+                $this->setValue("US_WORKPOSTALCODE", $doc->getRawValue("SI_POSTCODE", " "));
+                $this->setValue("US_WORKWEB", $doc->getRawValue("SI_WEB", " "));
+                $this->setValue("US_WORKCEDEX", $doc->getRawValue("SI_CEDEX", " "));
+                $this->setValue("US_COUNTRY", $doc->getRawValue("SI_COUNTRY", " "));
             }
-            $this->setValue("US_SCATG", $doc->getValue("SI_CATG"));
-            $this->setValue("US_JOB", $doc->getValue("SI_JOB"));
+            $this->setValue("US_SCATG", $doc->getRawValue("SI_CATG"));
+            $this->setValue("US_JOB", $doc->getRawValue("SI_JOB"));
             
-            if ($this->getValue("US_PPHONE") != "") $this->setValue("US_PHONE", $this->getValue("US_PPHONE") . " (" . _("direct") . ")");
-            else $this->setValue("US_PHONE", $doc->getValue("SI_PHONE", " "));
-            if ($this->getValue("US_PFAX") != "") $this->setValue("US_FAX", $this->getValue("US_PFAX") . " (" . _("direct") . ")");
-            else $this->setValue("US_FAX", $doc->getValue("SI_FAX", " "));
+            if ($this->getRawValue("US_PPHONE") != "") $this->setValue("US_PHONE", $this->getRawValue("US_PPHONE") . " (" . _("direct") . ")");
+            else $this->setValue("US_PHONE", $doc->getRawValue("SI_PHONE", " "));
+            if ($this->getRawValue("US_PFAX") != "") $this->setValue("US_FAX", $this->getRawValue("US_PFAX") . " (" . _("direct") . ")");
+            else $this->setValue("US_FAX", $doc->getRawValue("SI_FAX", " "));
         } else {
-            $this->setValue("US_PHONE", $this->getValue("US_PPHONE", " "));
-            $this->setValue("US_FAX", $this->getValue("US_PFAX", " "));
+            $this->setValue("US_PHONE", $this->getRawValue("US_PPHONE", " "));
+            $this->setValue("US_FAX", $this->getRawValue("US_PFAX", " "));
         }
     }
     /**
@@ -95,7 +93,7 @@ class _USER extends Doc implements MailRecipient
      */
     function canUpdateLdapCard()
     {
-        // $priv=$this->GetValue("US_PRIVCARD");
+        // $priv=$this->getRawValue("US_PRIVCARD");
         $priv = '';
         if ($priv == "S") return false;
         return true;
@@ -106,7 +104,7 @@ class _USER extends Doc implements MailRecipient
      */
     function updateUsableMail()
     {
-        $mail = $this->getValue("us_mail", $this->getValue("us_homemail"));
+        $mail = $this->getRawValue("us_mail", $this->getRawValue("us_homemail"));
         return $this->SetValue("us_usablemail", $mail);
     }
     /**
@@ -117,7 +115,7 @@ class _USER extends Doc implements MailRecipient
      */
     function getUserLDAPDN($rdn, $path = "")
     {
-        $priv = $this->GetValue("US_PRIVCARD");
+        $priv = $this->getRawValue("US_PRIVCARD");
         if ($priv == "P") {
             $u = new Account("", $this->owner);
             if ($u->isAffected()) {
@@ -125,7 +123,7 @@ class _USER extends Doc implements MailRecipient
                 return sprintf("%s=%s,ou=%s,%s,%s", $rdn, $this->infoldap[$this->cindex][$rdn], $u->login, $path, $this->racine);
             }
         } elseif ($priv == "G") {
-            $tidg = $this->getTValue("us_idprivgroup");
+            $tidg = $this->getMultipleRawValues("us_idprivgroup");
             
             $tdn = array(); // array od DN
             foreach ($tidg as $k => $idg) {
@@ -153,7 +151,7 @@ class _USER extends Doc implements MailRecipient
      */
     function SetPrivacity()
     {
-        $priv = $this->GetValue("US_PRIVCARD");
+        $priv = $this->getRawValue("US_PRIVCARD");
         $err = "";
         
         switch ($priv) {
@@ -192,7 +190,7 @@ class _USER extends Doc implements MailRecipient
                 }
                 if ($this->profid == $this->id) {
                     
-                    $tidg = $this->getTValue("us_idprivgroup");
+                    $tidg = $this->getMultipleRawValues("us_idprivgroup");
                     foreach ($tidg as $k => $idg) {
                         $t = getTDoc($this->dbaccess, $idg);
                         $gid = getv($t, "us_whatid");
@@ -213,7 +211,7 @@ class _USER extends Doc implements MailRecipient
      */
     function getMail()
     {
-        $mail = $this->getValue("us_usablemail");
+        $mail = $this->getRawValue("us_usablemail");
         if ($mail) return sprintf('"%s" <%s>', str_replace('"', '-', $this->getTitle()) , $mail);
         return '';
     }
@@ -229,6 +227,16 @@ class _USER extends Doc implements MailRecipient
      * @begin-method-ignore
      * this part will be deleted when construct document class until end-method-ignore
      */
+    /**
+     * return a mail address in a user-friendly representation, which
+     * might not be RFC822-compliant.
+     * (e.g. "John Doe (john.doe (at) EXAMPLE.NET)")
+     * @return string
+     */
+    public function getMailTitle()
+    {
+        return $this->getTitle();
+    }
 }
 /*
  * @end-method-ignore

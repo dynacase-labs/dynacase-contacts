@@ -17,7 +17,7 @@
  */
 include_once ("FDL/freedom_util.php");
 
-function faddbook_resume(&$action)
+function faddbook_resume(Action & $action)
 {
     echo "totoqsdqsmlkdjqsmldqsjdmlqsjmdl";
     $id = GetHttpVars("id", "");

@@ -15,7 +15,7 @@
  */
 /**
  */
-function faddbook_delprefered(&$action)
+function faddbook_delprefered(Action & $action)
 {
     
     $cid = GetHttpVars("cid", 0);

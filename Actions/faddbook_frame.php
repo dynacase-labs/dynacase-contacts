@@ -16,7 +16,7 @@
 /**
  */
 
-function faddbook_frame(&$action)
+function faddbook_frame(Action & $action)
 {
     
     $f1 = $action->getParam("USERCARD_FIRSTFAM", "USER");

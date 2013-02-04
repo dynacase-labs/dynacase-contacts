@@ -18,7 +18,7 @@
 
 include_once ("GENERIC/generic_util.php");
 // -----------------------------------
-function faddbook_menu(Action &$action)
+function faddbook_menu(Action & $action)
 {
     // -----------------------------------
     global $dbaccess; // use in getChildCatg function
@@ -61,7 +61,7 @@ function faddbook_menu(Action &$action)
                 "mtarget" => ($v->getOption("ltarget") != "") ? $v->getOption("ltarget") : $v->id,
                 "mtitle" => $v->getLabel() ,
                 "confirm" => ($confirm) ? "true" : "false",
-                "tconfirm" => ($confirm) ? sprintf(_("Sure %s ?") , addslashes($v->getLabel())) : "",
+                "tconfirm" => ($confirm) ? sprintf(_("uc Sure %s ?") , addslashes($v->getLabel())) : "",
                 "murl" => addslashes($fdoc->urlWhatEncode($v->link))
             );
             
@@ -84,7 +84,6 @@ function faddbook_menu(Action &$action)
         popupInvisible("helpmenu", 1, 'impcsv');
     }
     
-
     popupInvisible("helpmenu", 1, 'folders');
     if ($action->HasPermission("FREEDOM_GED", "FREEDOM")) {
         popupActive("helpmenu", 1, 'folders');

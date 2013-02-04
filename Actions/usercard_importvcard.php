@@ -20,7 +20,7 @@ include_once ("FDL/Class.Dir.php");
 include_once ("FDL/Class.UsercardVcard.php");
 include_once ("GENERIC/generic_util.php");
 
-function usercard_importvcard(&$action)
+function usercard_importvcard(Action & $action)
 {
     global $_FILES;
     // Get all the params
@@ -51,7 +51,7 @@ function usercard_importvcard(&$action)
             // Add new contact card
             $doc = createDoc($dbaccess, "USER");
             
-            if (!$doc) $action->exitError(sprintf(_("no privilege to create this kind (%d) of document") , "USER"));
+            if (!$doc) $action->exitError(sprintf(_("uc no privilege to create this kind (%d) of document") , "USER"));
             
             $doc->Add();
             // set privacity
@@ -67,7 +67,9 @@ function usercard_importvcard(&$action)
                 reset($category);
                 
                 while (list($k, $v) = each($category)) {
-                    
+                    /**
+                     * @var Dir ĉatg
+                     */
                     $catg = new_Doc($dbaccess, $v);
                     $catg->AddFile($doc->id);
                 }
@@ -90,6 +92,9 @@ function usercard_importvcard(&$action)
                         "title" => $doc->title
                     );
                     $ldoc = $doc->GetDocWithSameTitle();
+                    /**
+                     * @var Doc $v
+                     */
                     while (list($k, $v) = each($ldoc)) {
                         $err = $v->delete(); // delete all double (if has permission)
                         $tabdel[] = array(
@@ -102,7 +107,7 @@ function usercard_importvcard(&$action)
                 case "keep":
                     $ldoc = $doc->GetDocWithSameTitle();
                     if (count($ldoc) == 0) {
-                        $doc->PostModify();
+                        $doc->postStore();
                         $tabadd[] = array(
                             "id" => $doc->id,
                             "title" => $doc->title

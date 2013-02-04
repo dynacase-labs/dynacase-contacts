@@ -32,7 +32,7 @@ include_once ("FDL/Lib.Dir.php");
  * @global string $viewone Http var : (Y|N) set Y if want display detail doc if only one found
  * @global string $createsubfam Http var : (Y|N) set N if no want view possibility to create subfamily
  */
-function faddbook_main(&$action)
+function faddbook_main(Action & $action)
 {
     global $_POST;
     
@@ -155,13 +155,14 @@ function faddbook_main(&$action)
     $orderby = "title";
     
     $cols = 0;
-    $filter = array();
+    
     $td = array();
     $sf = "";
+    $s = new SearchDoc($action->dbaccess, $sfam);
     $clabel = mb_convert_case(mb_strtolower($dnfam->title) , MB_CASE_TITLE);
     if (isset($rqi_form["__ititle"]) && $rqi_form["__ititle"] != "" && $rqi_form["__ititle"] != $clabel) {
-        if ($sfullsearch) $filter[] = "( title ~* '" . $rqi_form["__ititle"] . "' ) ";
-        else $filter[] = "( title ~* '^" . $rqi_form["__ititle"] . "' ) ";
+        if ($sfullsearch) $s->addFilter("title ~* '%s'", $rqi_form["__ititle"]);
+        else $s->addFilter("title ~* '^%s'", $rqi_form["__ititle"]);
         $sf = $rqi_form["__ititle"];
     }
     $td[] = array(
@@ -175,6 +176,9 @@ function faddbook_main(&$action)
     $cols++;
     
     $vattr = array();
+    /**
+     * @var NormalAttribute $v
+     */
     foreach ($fattr as $k => $v) {
         if ($v->type != "menu" && $v->type != "frame") {
             if (isset($ucols[$v->id]) && $ucols[$v->id] == 1) {
@@ -191,7 +195,8 @@ function faddbook_main(&$action)
                         $attnormal = true;
                 }
                 if (isset($rqi_form[$v->id]) && $rqi_form[$v->id] != "" && $rqi_form[$v->id] != $clabel) {
-                    $filter[] = "( " . $v->id . " ~* '" . $rqi_form[$v->id] . "' ) ";
+                    
+                    $s->addFilter($v->id . " ~* '%s'", $rqi_form[$v->id]);
                     $sf = $rqi_form[$v->id];
                 }
                 $td[] = array(
@@ -213,8 +218,7 @@ function faddbook_main(&$action)
      * @var int $psearch
      */
     $fsearch = $psearch + $lpage + 1;
-    $cl = $rq = getChildDoc($dbaccess, $dirid, $psearch, $fsearch, $filter, $action->user->id, "TABLE", $sfam, false, "title");
-    
+    $cl = $rq = $s->search();
     $dline = array();
     $il = 0;
     

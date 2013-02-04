@@ -77,7 +77,7 @@ addEvent(window,"load",viewFirstTab);
 <div id="society" class="fabogdetail" style="display:none"><table class="fabtable" width="100%"><tr><td width="20%"></td><td width="20%"></td><td width="60%"></td></tr>
 
 
-<tr><td></td><td colspan="2" align="left"><div class="fabcaddress">[TEXT:address]</div><div>&nbsp;</div></td></tr>
+<tr><td></td><td colspan="2" align="left"><div class="fabcaddress">[TEXT:uc address]</div><div>&nbsp;</div></td></tr>
 [IF S_US_WORKADDR]<tr><td></td>
 <td colspan="2"><span class="fabcrub">[V_US_WORKADDR]</span></td></tr>[ENDIF S_US_WORKADDR]
 <tr><td></td>

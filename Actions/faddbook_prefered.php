@@ -18,7 +18,7 @@
 include_once ("FDL/freedom_util.php");
 include_once ("FDL/Class.Doc.php");
 
-function faddbook_prefered(&$action)
+function faddbook_prefered(Action & $action)
 {
     
     $action->parent->AddJsRef($action->GetParam("CORE_PUBURL") . "/FDL/Layout/common.js");

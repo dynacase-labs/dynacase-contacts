@@ -17,7 +17,7 @@
  */
 include_once ("FDL/Lib.Dir.php");
 
-function faddbook_maincols(&$action)
+function faddbook_maincols(Action & $action)
 {
     
     global $_GET, $_POST, $ZONE_ARGS;
@@ -43,6 +43,9 @@ function faddbook_maincols(&$action)
     $dfam = createDoc($dbaccess, $sfam, false);
     $fattr = $dfam->GetAttributes();
     $cols = array();
+    /**
+     * @var NormalAttribute $v
+     */
     foreach ($fattr as $k => $v) {
         if ($v->type != "menu" && $v->type != "frame" && $v->visibility != "H" && $v->visibility != "O" && $v->visibility != "I") {
             $cols[$v->id] = array(
@@ -88,7 +91,7 @@ function faddbook_maincols(&$action)
             }
         }
     }
-    
+    $vcols = array();
     foreach ($cols as $k => $v) {
         $vcols[] = array(
             "id" => $k,

@@ -32,7 +32,10 @@ class _SOCIETY extends Doc
         // contracts():SI_IDCONTRATS,SI_CONTRATS
         if ($this->initid > 0) {
             $filter[] = "si_idsoc =  '" . $this->initid . "'";
-            $tsite = getChildDoc($this->dbaccess, 0, 0, "ALL", $filter, 1, "TABLE", "SITE");
+            $s = new SearchDoc($this->dbaccess, "SITE");
+            $s->overrideViewControl();
+            $s->setObjectReturn(false);
+            $tsite = $s->search();
             $idc = array();
             $tc = array();
             foreach ($tsite as $k => $v) {
@@ -44,7 +47,7 @@ class _SOCIETY extends Doc
             $this->setValue("SI_SITES", $tc);
         }
     }
-    function SpecRefresh()
+    function preRefresh()
     {
         $this->UpdateSite();
     }
