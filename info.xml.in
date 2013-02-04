@@ -10,6 +10,9 @@
     </requires>
 
     <post-install>
+        <process command="programs/USERCARD_init">
+            <label>Reactivate USERCARD application</label>
+        </process>
         <process command="programs/record_application USERCARD" />
         <process command="./wsh.php --api=appadmin --method=reinit --appname=USERCARD" />
         <process command="programs/update_catalog" />

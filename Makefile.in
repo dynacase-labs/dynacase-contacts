@@ -15,7 +15,7 @@ GZIP_ENV = --best
 
 export targetdir PACKAGE
 
-SUBDIR= Families Actions Scripts Images
+SUBDIR= Families Actions Scripts Images programs
 
 include $(utildir)/PubRule
 
