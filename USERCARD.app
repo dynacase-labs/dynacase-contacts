@@ -34,12 +34,12 @@ $action_desc = array(
 
     array(
         "name" => "USERCARD_VCARD",
-        "short_name" => N_("view as vcard"),
+        "short_name" => N_("uc view as vcard"),
         "acl" => "USERCARD_READ"
     ),
     array(
         "name" => "USERCARD_EDITIMPORTVCARD",
-        "short_name" => N_("edit import vcard"),
+        "short_name" => N_("uc edit import vcard"),
         "acl" => "USERCARD_READ"
     ),
     array(

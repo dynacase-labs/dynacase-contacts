@@ -27,7 +27,7 @@ function faddbook_speedsearch(Action & $action)
     $ws = (GetHttpVars("sallf", "") == "on" ? 1 : 0);
     $vtext = GetHttpVars("vtext", "");
     if ($vtext == "") {
-        $action->lay->set("vtext", _("search"));
+        $action->lay->set("vtext", _("uc search"));
         $action->lay->set("first", "true");
     } else {
         $action->lay->set("vtext", $vtext);

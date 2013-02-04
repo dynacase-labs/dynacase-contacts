@@ -22,7 +22,7 @@
   </select>
 
 <BR>
-<label for="policy"> [TEXT:policy if same title]&nbsp;:</label>
+<label for="policy"> [TEXT:uc policy if same title]&nbsp;:</label>
   <SELECT NAME="policy">
             <OPTION VALUE="add">[TEXT:Add new card (duplicate title)]</OPTION>
             <OPTION VALUE="update">[TEXT:Replace address book card if has permission else duplicate]</OPTION>

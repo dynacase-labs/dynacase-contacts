@@ -22,7 +22,7 @@ function changeFormat(fmt) {
 	document.location.href='[CORE_STANDURL]&app=GENERIC&action=GENERIC_EDITIMPORT&famid=120';
 	return;
           document.getElementById('fsend').action='[CORE_STANDURL]&app=[APPNAME]&action=GENERIC_IMPORTCSV';
-          document.getElementById('bsubmit').value='[TEXT:Import CSV]';
+          document.getElementById('bsubmit').value='[TEXT:uc Import CSV]';
           document.getElementById('dvcard').style.display='none';
           document.getElementById('dcsv').style.display='block';
        break;
@@ -40,7 +40,7 @@ function changeFormat(fmt) {
 
 <select style="font-size:18pt" name="saction" onchange="changeFormat(this.options[this.selectedIndex].value)">
     <option  value="vcard">[TEXT:VCARD]</option>
-    <option  value="csv">[TEXT:CSV]</option>
+    <option  value="csv">[TEXT:uc CSV]</option>
 </select>
 
 
@@ -69,14 +69,14 @@ function changeFormat(fmt) {
   </select>
 
 <BR>
-<label for="policy"> [TEXT:policy if same title]&nbsp;:</label>
+<label for="policy"> [TEXT:uc policy if same title]&nbsp;:</label>
   <SELECT NAME="policy">
             <OPTION VALUE="add">[TEXT:Add new card (duplicate title)]</OPTION>
             <OPTION VALUE="update">[TEXT:Replace address book card if has permission else duplicate]</OPTION>
             <OPTION VALUE="keep">[TEXT:Keep address book card]</OPTION>
   </SELECT><BR>
 <input type="submit" id="bsubmit" value="[TEXT:Import vcard]">
- <input type="button" value=[TEXT:Help] onClick="subwindow([FDL_VD2SIZE],[FDL_HD2SIZE],'helpwhat','[CORE_STANDURL]app=CORE&action=HELPVIEW&appname=USERCARD&sectid=usercard.adm.import');"> 
+ <input type="button" value=[TEXT:uc Help] onClick="subwindow([FDL_VD2SIZE],[FDL_HD2SIZE],'helpwhat','[CORE_STANDURL]app=CORE&action=HELPVIEW&appname=USERCARD&sectid=usercard.adm.import');"> 
 </FORM>
 <hr width="50%">
 <div  id="dvcard">
@@ -101,8 +101,8 @@ END:VCARD
 </div>
 
 <div  style="display:none" id="dcsv">
-<p>[TEXT:CSV specification file]</p>
-<p>[TEXT:The separator field is the semicolon(;)]. 
+<p>[TEXT:uc CSV specification file]</p>
+<p>[TEXT:uc The separator field is the semicolon(;)]. 
 [TEXT:The first four fields must not be change, they identified the card structure]. 
 [TEXT:Only one line by personn is authorized]. 
 [TEXT:If an attribut is a multiline string, use the \ n characters to specify the new line]</p>

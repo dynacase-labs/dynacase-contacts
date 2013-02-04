@@ -51,7 +51,7 @@ function usercard_importvcard(Action & $action)
             // Add new contact card
             $doc = createDoc($dbaccess, "USER");
             
-            if (!$doc) $action->exitError(sprintf(_("no privilege to create this kind (%d) of document") , "USER"));
+            if (!$doc) $action->exitError(sprintf(_("uc no privilege to create this kind (%d) of document") , "USER"));
             
             $doc->Add();
             // set privacity

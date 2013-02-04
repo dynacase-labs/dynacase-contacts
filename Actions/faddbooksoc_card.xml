@@ -27,7 +27,7 @@ addEvent(window,"load",viewFirstTab);
 
 <td class="fabogcontent" align="center">
 <div id="ocontact" class="fabogsel" onmouseout="if (this.className!='fabogsel') this.className='fabog'" onmouseover="if (this.className!='fabogsel') this.className='fabogover';" onclick="showInfo('contact')">[TEXT:contact]</div>
-<div id="oaddress" class="fabog" onmouseout="if (this.className!='fabogsel') this.className='fabog'" onmouseover="if (this.className!='fabogsel') this.className='fabogover';" onclick="showInfo('address')">[TEXT:address]</div>
+<div id="oaddress" class="fabog" onmouseout="if (this.className!='fabogsel') this.className='fabog'" onmouseover="if (this.className!='fabogsel') this.className='fabogover';" onclick="showInfo('address')">[TEXT:uc address]</div>
 [IF HasOthers]
 <div id="oother" class="fabog" onmouseout="if (this.className!='fabogsel') this.className='fabog'" onmouseover="if (this.className!='fabogsel') this.className='fabogover';" onclick="showInfo('other')">[TEXT:other]</div>[ENDIF HasOthers]
 </td>
