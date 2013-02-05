@@ -9,6 +9,10 @@
         <module name="dynacase-core" version="3.2.5" comp="ge" />
     </requires>
 
+    <pre-install>
+        <check type="syscommand" command="ldapdelete" optional="yes"><label lang="en"></label></check>
+    </pre-install>
+
     <post-install>
         <process command="programs/USERCARD_init">
             <label>Reactivate USERCARD application</label>
