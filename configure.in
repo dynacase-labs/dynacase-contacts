@@ -25,25 +25,16 @@ LICENSE="http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General 
 AC_SUBST(LICENSE)
 
 AC_SUBST(PUBRULE)
-PUBRULE=
+PUBRULE="$(pwd)/buildTools"
 AC_ARG_WITH(pubrule, [  --with-pubrule=dir	Path to PubRule], PUBRULE=$withval)
-if test "x$PUBRULE" != "x"; then
-  PUBRULEDIR=$PUBRULE
+if test -z ${PUBRULE}; then
+    PUBRULE=`pwd`
+fi
+if test -f $PUBRULE/PubRule; then
+    AC_MSG_NOTICE([PubRule located at $PUBRULE])
 else
-  if test "x$PUBRULEDIR" == "x"; then
-     AC_CHECK_FILE($HOME/anakeen/devtools/PubRule, PUBRULEDIR=$HOME/anakeen/devtools/)
-     if test "x$PUBRULEDIR" = "x"; then
-          PUBRULEDIR=`pwd`
-     fi
-  fi
+    AC_MSG_ERROR([Could not find PubRule])
 fi
-AC_CHECK_FILE($PUBRULEDIR/PubRule, PUBRULE=$PUBRULEDIR)
-if test "x$PUBRULE" = "x"; then
-  AC_MSG_ERROR([Could not find PubRule])
-fi
-AC_MSG_NOTICE([PubRule located at $PUBRULE])
-
-
 
 #AC_OUTPUT(Makefile GEARS_init.php freedom-gears.spec debian/changelog info.xml)
 AC_OUTPUT(Makefile info.xml USERCARD_init.php )
