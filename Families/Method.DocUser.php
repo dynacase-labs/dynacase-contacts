@@ -224,10 +224,6 @@ class _USER extends Doc implements IMailRecipient
         return "us_usablemail";
     }
     /**
-     * @begin-method-ignore
-     * this part will be deleted when construct document class until end-method-ignore
-     */
-    /**
      * return a mail address in a user-friendly representation, which
      * might not be RFC822-compliant.
      * (e.g. "John Doe (john.doe (at) EXAMPLE.NET)")
@@ -237,6 +233,10 @@ class _USER extends Doc implements IMailRecipient
     {
         return $this->getTitle();
     }
+    /**
+     * @begin-method-ignore
+     * this part will be deleted when construct document class until end-method-ignore
+     */
 }
 /*
  * @end-method-ignore
