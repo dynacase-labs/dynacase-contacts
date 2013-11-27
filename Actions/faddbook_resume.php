@@ -28,7 +28,7 @@ function faddbook_resume(Action & $action)
     $db = $action->getParam("FREEDOM_DB");
     
     $ct = new_Doc($db, $id);
-    if (!$contact->isAffected()) {
+    if (!$ct->isAffected()) {
         echo "pas de doc";
         return;
     }
@@ -39,21 +39,20 @@ function faddbook_resume(Action & $action)
     
     $civ = $ct->getValue("us_civility");
     $action->lay->set("hasCiv", ($civ != "" ? true : false));
-    $action->lay->set("civilite", $civ);
+    $action->lay->eSet("civilite", $civ);
     
-    $action->lay->set("prenom", $ct->getValue("us_lname"));
-    $action->lay->set("nom", $ct->getValue("us_fname"));
+    $action->lay->eSet("prenom", $ct->getValue("us_lname"));
+    $action->lay->eSet("nom", $ct->getValue("us_fname"));
     
     $mail = $ct->getValue("us_mail");
     $action->lay->set("hasMail", ($mail != "" ? true : false));
-    $action->lay->set("addmail", $mail);
+    $action->lay->eSet("addmail", $mail);
     
-    $action->lay->set("nomob", $ct->getValue("us_mobile"));
-    $action->lay->set("notel", $ct->getValue("us_phone"));
+    $action->lay->eSet("nomob", $ct->getValue("us_mobile"));
+    $action->lay->eSet("notel", $ct->getValue("us_phone"));
     
     $action->lay->set("skypeid", "");
     $action->lay->set("msnid", "");
     
     return;
 }
-?>

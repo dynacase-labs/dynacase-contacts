@@ -27,22 +27,22 @@ function faddbook_speedsearch(Action & $action)
     $ws = (GetHttpVars("sallf", "") == "on" ? 1 : 0);
     $vtext = GetHttpVars("vtext", "");
     if ($vtext == "") {
-        $action->lay->set("vtext", _("uc search"));
+        $action->lay->eSet("vtext", _("uc search"));
         $action->lay->set("first", "true");
     } else {
-        $action->lay->set("vtext", $vtext);
+        $action->lay->eSet("vtext", $vtext);
         $action->lay->set("first", "false");
     }
     
     $searchuser = GetHttpVars("vsuser", 1);
-    $action->lay->set("vsuser", $searchuser);
-    $action->lay->set("USEL", ($searchuser == 1 ? true : false));
+    $action->lay->eSet("vsuser", $searchuser);
+    $action->lay->set("USEL", (bool)($searchuser == 1 ? true : false));
     $searchsoc = GetHttpVars("ssoc", 0);
-    $action->lay->set("ssoc", $searchsoc);
-    $action->lay->set("SOCSEL", ($searchsoc == 1 ? true : false));
+    $action->lay->eSet("ssoc", $searchsoc);
+    $action->lay->set("SOCSEL", (bool)($searchsoc == 1 ? true : false));
     
     $sfam1 = GetHttpVars("dfam", $action->getParam("USERCARD_FIRSTFAM"));
-    $action->lay->set("dfam", $sfam1);
+    $action->lay->eSet("dfam", $sfam1);
     $fam1 = new_Doc($dbaccess, $sfam1);
     $action->lay->set("icon1", $fam1->getIcon());
     
@@ -65,9 +65,9 @@ function faddbook_speedsearch(Action & $action)
     if ($ws) $filter[] = "(svalues ~* '" . $vtext . "')";
     else $filter[] = "(title ~* '" . $vtext . "')";
     $cu = array();
-    foreach ($searchfam as $ks => $vs) {
+    foreach ($searchfam as $vs) {
         $rq = getChildDoc($dbaccess, 0, 0, 25, $filter, $action->user->id, "TABLE", $vs, true, "title");
-        foreach ($rq as $k => $v) {
+        foreach ($rq as $v) {
             $vo = getDocObject($dbaccess, $v);
             $pzabstract = isset($vo->faddbook_resume) ? $vo->faddbook_resume : "FDL:VIEWTHUMBCARD";
             $pzcard = (isset($vo->faddbook_card) ? $vo->faddbook_card : $vo->defaultview);
@@ -85,10 +85,9 @@ function faddbook_speedsearch(Action & $action)
         $action->lay->set("Count", count($cu));
     }
     usort($cu, "sortmya");
-    $action->lay->setBlockData("Contacts", $cu);
+    $action->lay->eSetBlockData("Contacts", $cu);
 }
 function sortmya($a, $b)
 {
     return strcmp($a["title"], $b["title"]);
 }
-?>

@@ -24,7 +24,6 @@ function usercard_importvcard(Action & $action)
 {
     global $_FILES;
     // Get all the params
-    $id = GetHttpVars("id");
     $dbaccess = $action->GetParam("FREEDOM_DB");
     $policy = GetHttpVars("policy", "add");
     $category = GetHttpVars("category");
@@ -122,7 +121,6 @@ function usercard_importvcard(Action & $action)
     }
     $vcard_import->Close();
     
-    $action->lay->SetBlockData("ADDED", $tabadd);
-    $action->lay->SetBlockData("DELETED", $tabdel);
+    $action->lay->eSetBlockData("ADDED", $tabadd);
+    $action->lay->eSetBlockData("DELETED", $tabdel);
 }
-?>

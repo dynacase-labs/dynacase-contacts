@@ -41,7 +41,7 @@ function faddbook_menu(Action & $action)
     /**
      * @var DocFam $fdoc
      */
-    $action->lay->Set("famid", $famid);
+    $action->lay->eSet("famid", $famid);
     $action->lay->Set("topid", $fdoc->dfldid);
     
     include_once ("FDL/popup_util.php");
@@ -59,7 +59,7 @@ function faddbook_menu(Action & $action)
             $tmenu[$k] = array(
                 "mid" => $v->id,
                 "mtarget" => ($v->getOption("ltarget") != "") ? $v->getOption("ltarget") : $v->id,
-                "mtitle" => $v->getLabel() ,
+                "mtitle" => $v->getLabel(),
                 "confirm" => ($confirm) ? "true" : "false",
                 "tconfirm" => ($confirm) ? sprintf(_("uc Sure %s ?") , addslashes($v->getLabel())) : "",
                 "murl" => addslashes($fdoc->urlWhatEncode($v->link))
@@ -75,7 +75,7 @@ function faddbook_menu(Action & $action)
         }
     }
     
-    $action->lay->setBlockData("FAMMENU", $tmenu);
+    $action->lay->eSetBlockData("FAMMENU", $tmenu);
     
     if ($action->HasPermission("GENERIC_MASTER", "GENERIC")) {
         popupActive("helpmenu", 1, 'impcsv');
@@ -94,4 +94,3 @@ function faddbook_menu(Action & $action)
     
     $action->lay->set("ONEMENU", $onemenu);
 }
-?>

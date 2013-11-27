@@ -45,4 +45,3 @@ function usercard_vcard(Action & $action)
     unlink($export_file);
     exit;
 }
-?>

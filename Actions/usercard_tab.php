@@ -83,16 +83,16 @@ function usercard_tab(Action & $action)
         $catg = GetHttpVars("catg");
         
         $sql = array();
-        if ($mail <> "") $sql[] = " us_mail ~* '$mail'";
-        if ($phone <> "") $sql[] = " us_phone ~* '$phone'";
-        if ($pphone <> "") $sql[] = " us_pphone ~* '$pphone'";
-        if ($mobile <> "") $sql[] = " us_mobile ~* '$mobile'";
-        if ($adr <> "") $sql[] = " us_workaddr ~* '$adr'";
-        if ($postalcode <> "") $sql[] = " us_workpostalcode ~* '$postalcode'";
-        if ($town <> "") $sql[] = " us_worktown ~* '$town'";
-        if ($country <> "") $sql[] = "us_country ~* '$country'";
-        if ($function <> "") $sql[] = "us_type ~* '$function'";
-        if ($catg <> "") $sql[] = "us_scatg ~* '$catg'";
+        if ($mail <> "")       $sql[] = sprintf(" us_mail           ~* '%s'", pg_escape_string($mail));
+        if ($phone <> "")      $sql[] = sprintf(" us_phone          ~* '%s'", pg_escape_string($phone));
+        if ($pphone <> "")     $sql[] = sprintf(" us_pphone         ~* '%s'", pg_escape_string($pphone));
+        if ($mobile <> "")     $sql[] = sprintf(" us_mobile         ~* '%s'", pg_escape_string($mobile));
+        if ($adr <> "")        $sql[] = sprintf(" us_workaddr       ~* '%s'", pg_escape_string($adr));
+        if ($postalcode <> "") $sql[] = sprintf(" us_workpostalcode ~* '%s'", pg_escape_string($postalcode));
+        if ($town <> "")       $sql[] = sprintf(" us_worktown       ~* '%s'", pg_escape_string($town));
+        if ($country <> "")    $sql[] = sprintf(" us_country        ~* '%s'", pg_escape_string($country));
+        if ($function <> "")   $sql[] = sprintf(" us_type           ~* '%s'", pg_escape_string($function));
+        if ($catg <> "")       $sql[] = sprintf(" us_scatg          ~* '%s'", pg_escape_string($catg));
         
         $ch = "";
         foreach ($sql as $k => $v) {
@@ -126,12 +126,12 @@ function usercard_tab(Action & $action)
         $country = GetHttpVars("country");
         
         $sql = array();
-        if ($phone <> "") $sql[] = " si_phone ~* '$phone'";
-        if ($adr <> "") $sql[] = " si_addr ~* '$adr'";
-        if ($postalcode <> "") $sql[] = " si_postalcode ~* '$postalcode'";
-        if ($town <> "") $sql[] = " si_town ~* '$town'";
-        if ($country <> "") $sql[] = " si_country ~* '$country'";
-        if ($catg <> "") $sql[] = "si_catg ~* '$catg'";
+        if ($phone <> "")      $sql[] = sprintf(" si_phone      ~* '%s'", pg_escape_string($phone));
+        if ($adr <> "")        $sql[] = sprintf(" si_addr       ~* '%s'", pg_escape_string($adr));
+        if ($postalcode <> "") $sql[] = sprintf(" si_postalcode ~* '%s'", pg_escape_string($postalcode));
+        if ($town <> "")       $sql[] = sprintf(" si_town       ~* '%s'", pg_escape_string($town));
+        if ($country <> "")    $sql[] = sprintf(" si_country    ~* '%s'", pg_escape_string($country));
+        if ($catg <> "")       $sql[] = sprintf(" si_catg       ~* '%s'", pg_escape_string($catg));
         
         $ch = "";
         foreach ($sql as $k => $v) {
@@ -148,4 +148,3 @@ function usercard_tab(Action & $action)
     $sdoc->AddQuery($query);
     redirect($action, "FREEDOM", "FREEDOM_LISTDETAIL&dirid=" . $sdoc->id . "&catg=0");
 }
-?>

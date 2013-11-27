@@ -20,13 +20,13 @@ include_once ("FDL/Lib.Dir.php");
 function faddbook_maincols(Action & $action)
 {
     
-    global $_GET, $_POST, $ZONE_ARGS;
+    global $_GET, $_POST;
     $dbaccess = $action->getParam("FREEDOM_DB");
     // Get default visibilty => Abstract view from freedom
     $sfam = GetHttpVars("dfam", $action->getParam("DEFAULT_FAMILY"));
-    $action->lay->set("dfam", $sfam);
+    $action->lay->eSet("dfam", $sfam);
     $dnfam = new_Doc($dbaccess, $sfam);
-    $action->lay->set("dfamname", $dnfam->title);
+    $action->lay->eSet("dfamname", $dnfam->title);
     
     $reset = GetHttpVars("resetcols", 0);
     
@@ -46,7 +46,7 @@ function faddbook_maincols(Action & $action)
     /**
      * @var NormalAttribute $v
      */
-    foreach ($fattr as $k => $v) {
+    foreach ($fattr as $v) {
         if ($v->type != "menu" && $v->type != "frame" && $v->visibility != "H" && $v->visibility != "O" && $v->visibility != "I") {
             $cols[$v->id] = array(
                 "l" => ($v->isInAbstract == 1 ? 1 : 0) ,
@@ -67,22 +67,22 @@ function faddbook_maincols(Action & $action)
         //     AddWarningMsg("FADDBOOK_MAINCOLS = [$scol]");
         if ($pc != "") {
             $tccols = explode("|", $pc);
-            foreach ($tccols as $k => $v) {
+            foreach ($tccols as $v) {
                 if ($v == "") continue;
                 $x = explode("%", $v);
                 if ($x[0] != $sfam) $allcol[] = $x[0] . "%" . $x[1];
             }
         }
         $scol = implode("|", $allcol);
-        if ($action->user->id == 1) $action->parent->param->Set("FADDBOOK_MAINCOLS", $scol, PARAM_APP, $action->parent->id);
-        $action->parent->param->set("FADDBOOK_MAINCOLS", $scol, PARAM_USER . $action->user->id, $action->parent->id);
+        if ($action->user->id == 1) $action->parent->param->Set("FADDBOOK_MAINCOLS", $scol, Param::PARAM_APP, $action->parent->id);
+        $action->parent->param->set("FADDBOOK_MAINCOLS", $scol, Param::PARAM_USER . $action->user->id, $action->parent->id);
     } else { // User initial state
         if ($pc != "") {
             $tccols = explode("|", $pc);
             // reset first
             foreach ($cols as $k => $v) $cols[$k]["l"] = 0;
             
-            foreach ($tccols as $k => $v) {
+            foreach ($tccols as $v) {
                 if ($v == "") continue;
                 $x = explode("%", $v);
                 if ($x[0] == $sfam && isset($cols[$x[1]])) {
@@ -100,6 +100,5 @@ function faddbook_maincols(Action & $action)
             "l_view" => ($v["l"] == 1 ? "checked" : "")
         );
     }
-    $action->lay->setBlockData("Columns", $vcols);
+    $action->lay->eSetBlockData("Columns", $vcols);
 }
-?>

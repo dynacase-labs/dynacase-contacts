@@ -31,7 +31,7 @@ function faddbook_prefered(Action & $action)
     //   $fam = new_Doc($dbaccess, $sfam);
     //   $action->lay->set("icon", $fam->getIcon());
     $cu = array();
-    foreach ($tc as $k => $v) {
+    foreach ($tc as $v) {
         if ($v == "") continue;
         $cc = new_Doc($dbaccess, $v);
         $cu[] = array(
@@ -44,10 +44,9 @@ function faddbook_prefered(Action & $action)
         );
     }
     usort($cu, "sortmya");
-    $action->lay->setBlockData("Contacts", $cu);
+    $action->lay->eSetBlockData("Contacts", $cu);
 }
 function sortmya($a, $b)
 {
     return strcmp($a["title"], $b["title"]);
 }
-?>
