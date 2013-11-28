@@ -26,4 +26,3 @@ function faddbook_setuparam(Action & $action)
     
     redirect($action, $rapp, $raction);
 }
-?>

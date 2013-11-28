@@ -44,7 +44,7 @@ function faddbook_main(Action & $action)
     $dbaccess = $action->getParam("FREEDOM_DB");
     $action->parent->AddJsRef($action->GetParam("CORE_JSURL") . "/subwindow.js");
     
-    $pstart = GetHttpVars("sp", 0);
+    $pstart = (int)GetHttpVars("sp", 0);
     $action->lay->set("choosecolumn", ($action->Haspermission("USERCARD_MANAGER", "USERCARD") == 1 ? true : false));
     $chattr = GetHttpVars("chgAttr", "");
     $chid = GetHttpVars("chgId", "");
@@ -65,14 +65,14 @@ function faddbook_main(Action & $action)
     $action->lay->set("viewpref", ($cols == ""));
     // Init page lines
     $lpage = $action->getParam("FADDBOOK_MAINLINE", 25);
-    $action->lay->set("linep", $lpage);
+    $action->lay->eSet("linep", $lpage);
     $choicel = array(
         10,
         25,
         50
     );
     $tl = array();
-    foreach ($choicel as $k => $v) {
+    foreach ($choicel as $v) {
         $tl[] = array(
             "count" => $v,
             "init" => ($lpage == $v ? "selected" : "")
@@ -80,32 +80,31 @@ function faddbook_main(Action & $action)
     }
     $action->lay->setBlockData("BLine", $tl);
     // propagate HTTP vars parameters
-    $action->lay->set("sp", $pstart);
-    $action->lay->set("lp", $lpage);
-    $action->lay->set("target", $target);
-    $action->lay->set("dirid", $dirid);
-    $action->lay->set("etarget", $etarget);
-    $action->lay->set("createsubfam", GetHttpVars("createsubfam"));
-    $action->lay->set("usedefaultview", GetHttpVars("usedefaultview"));
-    $action->lay->set("viewone", GetHttpVars("viewone"));
-    $action->lay->set("cols", GetHttpVars("cols"));
-    $action->lay->set("", GetHttpVars("cols"));
-    
+    $action->lay->eSet("sp", $pstart);
+    $action->lay->eSet("lp", $lpage);
+    $action->lay->eSet("target", $target);
+    $action->lay->eSet("dirid", $dirid);
+    $action->lay->eSet("etarget", $etarget);
+    $action->lay->eSet("createsubfam", GetHttpVars("createsubfam"));
+    $action->lay->eSet("usedefaultview", GetHttpVars("usedefaultview"));
+    $action->lay->eSet("viewone", GetHttpVars("viewone"));
+    $action->lay->eSet("cols", GetHttpVars("cols"));
+
     $sfullsearch = (GetHttpVars("sfullsearch", "") == "on" ? true : false);
-    $action->lay->set("fullsearch", $sfullsearch);
+    $action->lay->set("fullsearch", (bool)$sfullsearch);
     
     $sfam = GetHttpVars("dfam", $action->getParam("USERCARD_FIRSTFAM"));
-    $action->lay->set("dfam", $sfam);
+    $action->lay->eSet("dfam", $sfam);
     $dnfam = new_Doc($dbaccess, $sfam);
-    $action->lay->set("famid", $dnfam->id);
-    $action->lay->set("famsearch", mb_convert_case(mb_strtolower($dnfam->title) , MB_CASE_TITLE));
+    $action->lay->eSet("famid", $dnfam->id);
+    $action->lay->eSet("famsearch", mb_convert_case(mb_strtolower($dnfam->title) , MB_CASE_TITLE));
     $dfam = createDoc($dbaccess, $sfam, false);
     $fattr = $dfam->GetAttributes();
     // Get user configuration
     $ucols = array();
     if ($cols) {
         $tccols = explode("|", $cols);
-        foreach ($tccols as $k => $v) {
+        foreach ($tccols as $v) {
             /**
              * @var string $v
              */
@@ -117,7 +116,7 @@ function faddbook_main(Action & $action)
         $pc = $action->getParam("FADDBOOK_MAINCOLS", "");
         if ($pc != "") {
             $tccols = explode("|", $pc);
-            foreach ($tccols as $k => $v) {
+            foreach ($tccols as $v) {
                 if ($v == "") continue;
                 $x = explode("%", $v);
                 if ($sfam == $x[0]) $ucols[$x[1]] = 1;
@@ -126,7 +125,7 @@ function faddbook_main(Action & $action)
         if (count($ucols) == 0) {
             // default abstract
             $la = $dnfam->getAbstractAttributes();
-            foreach ($la as $k => $v) {
+            foreach ($la as $v) {
                 if (($v->mvisibility != 'H') && ($v->mvisibility != 'I')) $ucols[$v->id] = 1;
             }
         }
@@ -143,17 +142,16 @@ function faddbook_main(Action & $action)
     if ($createsubfam) {
         $child+= $dnfam->GetChildFam($dnfam->id, true);
         $action->lay->set("viewsubfam", count($child) > 1);
-        $action->lay->setBlockData("NEW", $child);
+        $action->lay->eSetBlockData("NEW", $child);
         $fc = current($child);
-        $action->lay->set("famid", $fc["id"]);
-        $action->lay->set("famsearch", mb_convert_case(mb_strtolower($fc["title"]) , MB_CASE_TITLE));
+        $action->lay->eSet("famid", $fc["id"]);
+        $action->lay->eSet("famsearch", mb_convert_case(mb_strtolower($fc["title"]) , MB_CASE_TITLE));
     } else {
         $action->lay->set("viewsubfam", false);
     }
     
     $action->lay->set("cancreate", count($child) > 0);
-    $orderby = "title";
-    
+
     $cols = 0;
     
     $td = array();
@@ -161,8 +159,8 @@ function faddbook_main(Action & $action)
     $s = new SearchDoc($action->dbaccess, $sfam);
     $clabel = mb_convert_case(mb_strtolower($dnfam->title) , MB_CASE_TITLE);
     if (isset($rqi_form["__ititle"]) && $rqi_form["__ititle"] != "" && $rqi_form["__ititle"] != $clabel) {
-        if ($sfullsearch) $s->addFilter("title ~* '%s'", $rqi_form["__ititle"]);
-        else $s->addFilter("title ~* '^%s'", $rqi_form["__ititle"]);
+        if ($sfullsearch) $s->addFilter("title ~* '%s'", pg_escape_string($rqi_form["__ititle"]));
+        else $s->addFilter("title ~* '^%s'", pg_escape_string($rqi_form["__ititle"]));
         $sf = $rqi_form["__ititle"];
     }
     $td[] = array(
@@ -179,7 +177,7 @@ function faddbook_main(Action & $action)
     /**
      * @var NormalAttribute $v
      */
-    foreach ($fattr as $k => $v) {
+    foreach ($fattr as $v) {
         if ($v->type != "menu" && $v->type != "frame") {
             if (isset($ucols[$v->id]) && $ucols[$v->id] == 1) {
                 $sf = "";
@@ -200,31 +198,26 @@ function faddbook_main(Action & $action)
                     $sf = $rqi_form[$v->id];
                 }
                 $td[] = array(
-                    "ATTimage" => $attimage,
-                    "ATTnormal" => $attnormal,
+                    "ATTimage" => (bool)$attimage,
+                    "ATTnormal" => (bool)$attnormal,
                     "id" => $v->id,
                     "label" => ($sf == "" ? $clabel : "$sf") ,
-                    "filter" => ($sf == "" ? false : true) ,
+                    "filter" => (bool)($sf == "" ? false : true) ,
                     "firstCol" => false
                 );
                 $cols++;
             }
         }
-        $action->lay->SetBlockData("COLS", $td);
+        $action->lay->eSetBlockData("COLS", $td);
     }
     
-    $psearch = $pstart * $lpage;
-    /**
-     * @var int $psearch
-     */
-    $fsearch = $psearch + $lpage + 1;
     $cl = $rq = $s->search();
     $dline = array();
     $il = 0;
     
-    $action->lay->set("idone", ($viewone && (count($cl) == 1)) ? $cl[0]["id"] : false);
+    $action->lay->eSet("idone", ($viewone && (count($cl) == 1)) ? $cl[0]["id"] : false);
     
-    foreach ($cl as $k => $v) {
+    foreach ($cl as $v) {
         if ($il >= $lpage) continue;
         $dcol = array();
         $ddoc = getDocObject($dbaccess, $v);
@@ -236,7 +229,7 @@ function faddbook_main(Action & $action)
             "ATTimage" => false,
             "ATTnormal" => true
         );
-        foreach ($vattr as $ka => $va) {
+        foreach ($vattr as $va) {
             $attimage = $attnormal = false;
             switch ($va->type) {
                 case "image":
@@ -264,7 +257,7 @@ function faddbook_main(Action & $action)
         $dline[$il]["icop"] = $dnfam->GetIcon($v["icon"]);
         $il++;
     }
-    $pzone = ((!$usedefaultview) && isset($ddoc->faddbook_card)) ? $ddoc->faddbook_card : "";
+    $pzone = ((!$usedefaultview) && isset($ddoc) && isset($ddoc->faddbook_card)) ? $ddoc->faddbook_card : "";
     $action->lay->set("fabzone", $pzone);
     
     $action->lay->setBlockData("DLines", $dline);
@@ -287,4 +280,3 @@ function faddbook_main(Action & $action)
         $action->lay->set("dirtitle", $fdoc->title);
     }
 }
-?>
