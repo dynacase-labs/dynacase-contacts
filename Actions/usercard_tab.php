@@ -24,7 +24,7 @@ include_once ("FDL/editcard.php");
 // -----------------------------------
 function usercard_tab(Action & $action)
 {
-    $dbaccess = $action->GetParam("FREEDOM_DB");
+    $dbaccess = $action->dbaccess;
     /**
      * @var DocSearch $sdoc
      */

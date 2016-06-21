@@ -41,7 +41,7 @@ function faddbook_main(Action & $action)
         if (substr($k, 0, 4) == "rqi_") $rqi_form[substr($k, 4) ] = $v;
     }
     
-    $dbaccess = $action->getParam("FREEDOM_DB");
+    $dbaccess = $action->dbaccess;
     $action->parent->AddJsRef($action->GetParam("CORE_JSURL") . "/subwindow.js");
     
     $pstart = (int)GetHttpVars("sp", 0);

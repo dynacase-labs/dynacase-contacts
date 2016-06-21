@@ -171,7 +171,7 @@ function gsociety($dbaccess, $idc)
 // get enum list from society document
 function enumscatg()
 {
-    $dbaccess = getParam("FREEDOM_DB");
+    $dbaccess =getDbAccess();
     $soc = new_Doc($dbaccess, 124);
     
     if ($soc->isAffected()) {
@@ -254,7 +254,7 @@ function members($dbaccess, $groupid, $name = "", $sort = 'lastname', $searchinm
 //return my groups
 function mygroups($name = "")
 {
-    $dbaccess = GetParam("FREEDOM_DB");
+    $dbaccess =getDbAccess();
     $docuid = doc::getUserId();
     $tr = array();
     $doc = new_Doc($dbaccess, $docuid);

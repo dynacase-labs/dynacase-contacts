@@ -22,18 +22,18 @@ global $action;
 
 $usage = new ApiUsage();
 
-$usage->setText("Change usercard from csv to vcard");
-$fimport = $usage->addNeeded("ifile", "file to convert"); // file to convert
-$fvcf = $usage->addOption("ofile", "output file", null, "php://stdin"); // output file
+$usage->setDefinitionText("Change usercard from csv to vcard");
+$fimport = $usage->addRequiredParameter("ifile", "file to convert"); // file to convert
+$fvcf = $usage->addOptionalParameter("ofile", "output file", null, "php://stdin"); // output file
 
 $usage->verify();
 
 $appl = new Application();
 $appl->Set("USERCARD", $core);
 
-$dbaccess = $appl->GetParam("FREEDOM_DB");
+$dbaccess = $appl->dbaccess;
 if ($dbaccess == "") {
-    print "Database not found : param FREEDOM_DB";
+    print "Database not found ";
     exit;
 }
 
@@ -42,7 +42,7 @@ $doc = new_Doc($dbaccess, getFamIdFromName($dbaccess, "USER"));
 $lattr = $doc->GetNormalAttributes();
 $format = "DOC;" . $doc->id . ";<special id>;<special dirid>; ";
 
-while (list($k, $attr) = each($lattr)) {
+foreach($lattr as $attr) {
     $format.= $attr->getLabel() . " ;";
 }
 //print_r( $lattr);;

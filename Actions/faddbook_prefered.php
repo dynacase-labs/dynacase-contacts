@@ -23,7 +23,7 @@ function faddbook_prefered(Action & $action)
     
     $action->parent->AddJsRef($action->GetParam("CORE_PUBURL") . "/FDL/Layout/common.js");
     $action->parent->AddJsRef($action->GetParam("CORE_JSURL") . "/subwindow.js");
-    $dbaccess = $action->getParam("FREEDOM_DB");
+    $dbaccess = $action->dbaccess;
     
     $cpref = $action->getParam("FADDBOOK_PREFERED", "");
     $tc = explode("|", $cpref);

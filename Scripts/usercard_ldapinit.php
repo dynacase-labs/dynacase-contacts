@@ -21,6 +21,7 @@ include_once ("FDL/Lib.Dir.php");
 
 define("REDCOLOR", "\033" . '[1;31;40m');
 define("UPDTCOLOR", "\033" . '[1;32;40m');
+define("SKIPCOLOR", "\033" . '[1;33;40m');
 define("STOPCOLOR", "\033" . '[0m');
 global $action;
 
@@ -40,9 +41,9 @@ if ($action->GetParam("LDAP_ENABLED", "no") != "yes") {
     wbar(0, 0, $err);
     return true;
 }
-$dbaccess = $appl->GetParam("FREEDOM_DB");
+$dbaccess = $appl->dbaccess;
 if ($dbaccess == "") {
-    $err = "Database not found : param FREEDOM_DB";
+    $err = "Database not found ";
     print $err;
     wbar(0, 0, $err);
     return true;

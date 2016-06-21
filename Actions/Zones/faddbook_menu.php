@@ -35,7 +35,7 @@ function faddbook_menu(Action & $action)
         $action->lay->set("fhelp", "fhidden");
     }
     
-    $dbaccess = $action->GetParam("FREEDOM_DB");
+    $dbaccess = $action->dbaccess;
     
     $fdoc = new_Doc($dbaccess, $famid);
     /**

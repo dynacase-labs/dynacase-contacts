@@ -25,7 +25,7 @@ function faddbook_resume(Action & $action)
         echo "pas did";
         return;
     }
-    $db = $action->getParam("FREEDOM_DB");
+    $db = $action->dbaccess;
     
     $ct = new_Doc($db, $id);
     if (!$ct->isAffected()) {
@@ -33,23 +33,23 @@ function faddbook_resume(Action & $action)
         return;
     }
     
-    if ($ct->getValue("us_photo") == "") $photo = $action->GetImageUrl("faddbook_nophoto.gif");
-    else $photo = $ct->getIcon($ct->getValue("us_photo") == "");
+    if ($ct->getRawValue("us_photo") == "") $photo = $action->parent->GetImagelink("faddbook_nophoto.gif");
+    else $photo = $ct->getIcon($ct->getRawValue("us_photo") == "");
     $action->lay->set("photo", $photo);
     
-    $civ = $ct->getValue("us_civility");
+    $civ = $ct->getRawValue("us_civility");
     $action->lay->set("hasCiv", ($civ != "" ? true : false));
     $action->lay->eSet("civilite", $civ);
     
-    $action->lay->eSet("prenom", $ct->getValue("us_lname"));
-    $action->lay->eSet("nom", $ct->getValue("us_fname"));
+    $action->lay->eSet("prenom", $ct->getRawValue("us_lname"));
+    $action->lay->eSet("nom", $ct->getRawValue("us_fname"));
     
-    $mail = $ct->getValue("us_mail");
+    $mail = $ct->getRawValue("us_mail");
     $action->lay->set("hasMail", ($mail != "" ? true : false));
     $action->lay->eSet("addmail", $mail);
     
-    $action->lay->eSet("nomob", $ct->getValue("us_mobile"));
-    $action->lay->eSet("notel", $ct->getValue("us_phone"));
+    $action->lay->eSet("nomob", $ct->getRawValue("us_mobile"));
+    $action->lay->eSet("notel", $ct->getRawValue("us_phone"));
     
     $action->lay->set("skypeid", "");
     $action->lay->set("msnid", "");

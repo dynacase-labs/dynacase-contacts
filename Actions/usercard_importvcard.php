@@ -24,7 +24,7 @@ function usercard_importvcard(Action & $action)
 {
     global $_FILES;
     // Get all the params
-    $dbaccess = $action->GetParam("FREEDOM_DB");
+    $dbaccess = $action->dbaccess;
     $policy = GetHttpVars("policy", "add");
     $category = GetHttpVars("category");
     $privacity = GetHttpVars("privacity", "R");
