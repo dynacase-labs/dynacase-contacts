@@ -248,7 +248,7 @@ function faddbook_main(Action & $action)
                 "ATTname" => $va->id
             );
         }
-        $action->lay->setBlockData("C$il", $dcol);
+        $action->lay->esetBlockData("C$il", $dcol);
         $dline[$il]["cid"] = $v["id"];
         $dline[$il]["canChange"] = $attchange;
         $dline[$il]["etarget"] = ($etarget) ? $etarget : "edit" . $v["id"];

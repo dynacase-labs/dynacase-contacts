@@ -47,31 +47,31 @@ class _USERBOOK extends Doc
             $this->lay->set("photo", $imgu);
         }
         
-        $this->lay->set("nom", $this->getRawValue("us_lname"));
-        $this->lay->set("prenom", $this->getRawValue("us_fname"));
+        $this->lay->eset("nom", $this->getRawValue("us_lname"));
+        $this->lay->eset("prenom", $this->getRawValue("us_fname"));
         
         $soc = $this->getRawValue("us_society");
         $this->lay->set("hasSoc", ($soc != "" ? true : false));
-        $this->lay->set("societe", $soc);
+        $this->lay->eset("societe", $soc);
         
         $mail = $this->getRawValue("us_mail");
         $this->lay->set("hasMail", ($mail != "" ? true : false));
         $this->lay->set("addmail", $mail);
         
         $mob = $this->getRawValue("us_mobile");
-        $this->lay->set("nomob", $mob);
+        $this->lay->eset("nomob", $mob);
         $this->lay->set("hasMob", ($mob != "" ? true : false));
         
         $tel = $this->getRawValue("us_phone");
-        $this->lay->set("notel", $tel);
+        $this->lay->eset("notel", $tel);
         $this->lay->set("hasTel", ($tel != "" ? true : false));
         
         $sky = $this->getRawValue("us_skypeid");
-        $this->lay->set("skypeid", $sky);
+        $this->lay->eset("skypeid", $sky);
         $this->lay->set("hasSky", ($sky != "" ? true : false));
         
         $msn = $this->getRawValue("us_msnid");
-        $this->lay->set("msnid", $msn);
+        $this->lay->eset("msnid", $msn);
         $this->lay->set("hasMsn", ($msn != "" ? true : false));
         
         return;
