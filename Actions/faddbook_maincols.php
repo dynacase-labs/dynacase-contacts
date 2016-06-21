@@ -21,7 +21,7 @@ function faddbook_maincols(Action & $action)
 {
     
     global $_GET, $_POST;
-    $dbaccess = $action->getParam("FREEDOM_DB");
+    $dbaccess = $action->dbaccess;
     // Get default visibilty => Abstract view from freedom
     $sfam = GetHttpVars("dfam", $action->getParam("DEFAULT_FAMILY"));
     $action->lay->eSet("dfam", $sfam);

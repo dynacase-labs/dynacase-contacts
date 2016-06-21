@@ -231,7 +231,7 @@ class _USER extends Doc implements IMailRecipient
      */
     public function getMailTitle()
     {
-        return $this->getTitle();
+        return $this->getMail();
     }
     /**
      * @begin-method-ignore

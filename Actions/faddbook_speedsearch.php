@@ -21,7 +21,7 @@ include_once ("FDL/Lib.Dir.php");
 
 function faddbook_speedsearch(Action & $action)
 {
-    $dbaccess = $action->getParam("FREEDOM_DB");
+    $dbaccess = $action->dbaccess;
     $action->parent->AddJsRef($action->GetParam("CORE_JSURL") . "/subwindow.js");
     
     $ws = (GetHttpVars("sallf", "") == "on" ? 1 : 0);

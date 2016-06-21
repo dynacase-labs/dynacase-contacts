@@ -27,7 +27,7 @@ function usercard_vcard(Action & $action)
     // -----------------------------------
     // Get all the params
     $docid = GetHttpVars("id"); // dccument to export
-    $dbaccess = $action->GetParam("FREEDOM_DB");
+    $dbaccess = $action->dbaccess;
     
     $doc = new_Doc($dbaccess, $docid);
     

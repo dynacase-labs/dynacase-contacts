@@ -23,7 +23,7 @@ function faddbook_prefered(Action & $action)
     
     $action->parent->AddJsRef($action->GetParam("CORE_PUBURL") . "/FDL/Layout/common.js");
     $action->parent->AddJsRef($action->GetParam("CORE_JSURL") . "/subwindow.js");
-    $dbaccess = $action->getParam("FREEDOM_DB");
+    $dbaccess = $action->dbaccess;
     
     $cpref = $action->getParam("FADDBOOK_PREFERED", "");
     $tc = explode("|", $cpref);
@@ -38,13 +38,13 @@ function faddbook_prefered(Action & $action)
             "id" => $cc->id,
             "resume" => $cc->viewDoc((isset($cc->faddbook_resume) ? $cc->faddbook_resume : "FDL:VIEWTHUMBCARD")) ,
             "icon" => $cc->getIcon() ,
-            "title" => mb_convert_case(mb_strtolower($cc->title) , MB_CASE_TITLE) ,
+            "title" => htmlspecialchars(mb_convert_case(mb_strtolower($cc->title) , MB_CASE_TITLE) ),
             "fabzone" => (isset($cc->faddbook_card) ? $cc->faddbook_card : $cc->defaultview) ,
-            "jstitle" => addslashes(mb_convert_case(mb_strtolower($cc->title) , MB_CASE_TITLE))
+            "jstitle" => htmlspecialchars(addslashes(mb_convert_case(mb_strtolower($cc->title) , MB_CASE_TITLE)))
         );
     }
     usort($cu, "sortmya");
-    $action->lay->eSetBlockData("Contacts", $cu);
+    $action->lay->SetBlockData("Contacts", $cu);
 }
 function sortmya($a, $b)
 {

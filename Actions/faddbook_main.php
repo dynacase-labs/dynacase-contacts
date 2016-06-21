@@ -41,7 +41,7 @@ function faddbook_main(Action & $action)
         if (substr($k, 0, 4) == "rqi_") $rqi_form[substr($k, 4) ] = $v;
     }
     
-    $dbaccess = $action->getParam("FREEDOM_DB");
+    $dbaccess = $action->dbaccess;
     $action->parent->AddJsRef($action->GetParam("CORE_JSURL") . "/subwindow.js");
     
     $pstart = (int)GetHttpVars("sp", 0);
@@ -248,7 +248,7 @@ function faddbook_main(Action & $action)
                 "ATTname" => $va->id
             );
         }
-        $action->lay->setBlockData("C$il", $dcol);
+        $action->lay->esetBlockData("C$il", $dcol);
         $dline[$il]["cid"] = $v["id"];
         $dline[$il]["canChange"] = $attchange;
         $dline[$il]["etarget"] = ($etarget) ? $etarget : "edit" . $v["id"];
