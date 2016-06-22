@@ -1,12 +1,10 @@
 <?php
 /*
  * @author Anakeen
- * @license http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License
  * @package FDL
  */
 /**
  * @author Anakeen
- * @license http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License
  */
 // ---------------------------------------------------------------
 // $Id: USERCARD_init.php.in,v 1.17 2005/10/06 13:18:42 eric Exp $
