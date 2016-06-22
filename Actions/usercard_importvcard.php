@@ -1,7 +1,6 @@
 <?php
 /*
  * @author Anakeen
- * @license http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License
  * @package FDL
 */
 /**
@@ -9,7 +8,6 @@
  *
  * @author Anakeen 2000
  * @version $Id: usercard_importvcard.php,v 1.16 2005/11/23 14:03:50 eric Exp $
- * @license http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License
  * @package FDL
  * @subpackage USERCARD
  */
